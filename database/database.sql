@@ -39,6 +39,26 @@ CREATE TABLE devices (
   FOREIGN KEY(model_id) REFERENCES models(id)
 );
 
+CREATE TABLE User (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL,
+  email TEXT NOT NULL
+);
+
+CREATE TABLE Transaction_ (
+    id INTEGER PRIMARY KEY,
+    device_id INTEGER,
+    buyer_id INTEGER,
+    seller_id INTEGER,
+    transaction_date DATE,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (device_id) REFERENCES Device(id),
+    FOREIGN KEY (buyer_id) REFERENCES User(id),
+    FOREIGN KEY (seller_id) REFERENCES User(id)
+);
+
 -- ----------------------------
 -- Records of brands
 -- ----------------------------
@@ -209,3 +229,31 @@ INSERT INTO devices (id, model_id, name, released_at, body, os, storage, display
 INSERT INTO devices (id, model_id, name, released_at, body, os, storage, display_size, display_resolution, camera_pixels, video_pixels, ram, chipset, battery_size, battery_type, specifications) VALUES
 (40, 40, 'Oppo A54', '2021-04-19', 'Glass front (Gorilla Glass 3), plastic back, plastic frame', 'Android 10, ColorOS 7.2', '64GB/128GB', '6.51 inches', '720 x 1600 pixels', '13 MP', '1080p', '4GB/6GB', 'Mediatek MT6765 Helio P35 (12nm)', '5000 mAh', 'Li-Po', 'HDR');
 
+-- ----------------------------
+-- Populating Users
+-- ----------------------------
+
+-- Populating the User table with adjusted emails
+INSERT INTO User (id, name, username, password, email) VALUES
+(1, 'João Silva', 'joao_silva', 'senha123', 'joao.silva@gmail.com'),
+(2, 'Maria Santos', 'maria_santos', 'senha456', 'maria.santos@gmail.com'),
+(3, 'Pedro Oliveira', 'pedro_oliveira', 'senha789', 'pedro.oliveira@gmail.com'),
+(4, 'Ana Costa', 'ana_costa', 'senha1234', 'ana.costa@gmail.com'),
+(5, 'Carlos Rodrigues', 'carlos_rodrigues', 'senha5678', 'carlos.rodrigues@gmail.com'),
+(6, 'Marta Ferreira', 'marta_ferreira', 'senha9012', 'marta.ferreira@gmail.com'),
+(7, 'Manuel Pereira', 'manuel_pereira', 'senha3456', 'manuel.pereira@gmail.com'),
+(8, 'Sofia Martins', 'sofia_martins', 'senha7890', 'sofia.martins@gmail.com'),
+(9, 'Jorge Sousa', 'jorge_sousa', 'senha12345', 'jorge.sousa@gmail.com'),
+(10, 'Carolina Almeida', 'carolina_almeida', 'senha67890', 'carolina.almeida@gmail.com'),
+(11, 'Rui Silva', 'rui_silva', 'senha23456', 'rui.silva@gmail.com'),
+(12, 'Inês Santos', 'ines_santos', 'senha78901', 'ines.santos@gmail.com'),
+(13, 'Paulo Oliveira', 'paulo_oliveira', 'senha234567', 'paulo.oliveira@gmail.com'),
+(14, 'Catarina Costa', 'catarina_costa', 'senha890123', 'catarina.costa@gmail.com'),
+(15, 'Luís Rodrigues', 'luis_rodrigues', 'senha456789', 'luis.rodrigues@gmail.com'),
+(16, 'Teresa Ferreira', 'teresa_ferreira', 'senha012345', 'teresa.ferreira@gmail.com'),
+(17, 'Fernando Pereira', 'fernando_pereira', 'senha678901', 'fernando.pereira@gmail.com'),
+(18, 'Diana Martins', 'diana_martins', 'senha2345678', 'diana.martins@gmail.com'),
+(19, 'António Sousa', 'antonio_sousa', 'senha9012345', 'antonio.sousa@gmail.com'),
+(20, 'Isabel Almeida', 'isabel_almeida', 'senha6789012', 'isabel.almeida@gmail.com'),
+(21, 'Miguel Silva', 'miguel_silva', 'senha3456789', 'miguel.silva@gmail.com'),
+(22, 'Andreia Santos', 'andreia_santos', 'senha0123456', 'andreia.santos@gmail.com');

@@ -1,0 +1,58 @@
+@startuml
+
+class User {
+  +id: Integer
+  +username: String
+  +email: String
+  +password: String
+  +register(): void
+  +login(): void
+}
+
+class Phone {
+  +id: Integer
+  +model_id: Integer
+  +name: String
+  +released_at: Date
+  +body: String
+  +os: String
+  +storage: String
+  +display_size: String
+  +display_resolution: String
+  +camera_pixels: String
+  +video_pixels: String
+  +ram: String
+  +chipset: String
+  +battery_size: String
+  +battery_type: String
+  +specifications: String
+}
+
+class Brand {
+  +id: Integer
+  +name: String
+}
+
+class Model {
+  +id: Integer
+  +brand_id: Integer
+  +name: String
+}
+
+class Transaction {
+  +id: Integer
+  +buyer_id: Integer
+  +seller_id: Integer
+  +phone_id: Integer
+  +transaction_date: Date
+  +price: Float
+}
+
+
+User "1" -- "0..*" Transaction : buys >
+User "1" -- "0..*" Transaction : sells >
+Phone "1" -- "0..*" Transaction : is sold in >
+Brand "1" -- "0..*" Model : has >
+Model "1" -- "0..*" Phone : has >
+
+@enduml
