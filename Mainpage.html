@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TechTudo </title>
+    <link rel="stylesheet" href="styles.css"> <!-- futuro arquivo em css -->
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo do site">
+            <h1> Nome do site </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Adicionar Item</a></li>
+                <li><a href="#">Carrinho</a></li> 
+                <li><a href="#">Perfil</a></li> 
+                <li><a href="#">Conta</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+    <div class="filter-bar">
+        <form>
+            <label for="brand">Marca:</label>
+            <select id="brand">
+                <option value="all">Todas as marcas</option>
+
+            </select>
+
+            <label for="model">Modelo:</label>
+            <select id="model">
+                <option value="all">Todos os modelos</option>
+
+            </select>
+
+            <label for="megapixels">Megapixels da Câmera:</label>
+            <select id="megapixels">
+                <option value="all">Todos</option>
+                <option value="8">Até 8MP</option>
+                <option value="12-16">12MP - 16MP</option>
+                <option value="20-48">20MP - 48MP</option>
+                <option value="50-108">50MP - 108MP</option>
+                <option value="108+">+108MP</option>
+            </select>
+                      
+
+            <label for="price">Preço:</label>
+            <input type="number" id="price" min="0" max="10000" step="10">
+            
+
+            <label for="condition">Condição:</label>
+            <select id="condition">
+                <option value="all">Todas as condições</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+            </select>
+            
+            
+            <button type="submit">Filtrar</button>
+        </form>
+    </div>
+
+    <div class="listings">
+    </div>
+    <footer>
+        <p>&copy;  TechTudo - 2024 | Desenvolvido por Alvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
+    </footer>
+</body>
+</html>
