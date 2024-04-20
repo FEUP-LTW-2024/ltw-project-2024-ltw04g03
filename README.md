@@ -1,6 +1,28 @@
 # LTW Project - TechTudo
 
-In this project we developed a website, TechTudo, that facilitates the buying and selling of pre-loved phones
+In this project we developed a website, TechTudo, that facilitates the buying and selling of pre-loved phones.
+
+![img](docs/TechTudo_logo.png)
+
+### Functionalities
+
+- User:
+    - register/log-in (sem register/log-in pode-se navegar mas qualquer ação que não seja the visita exige log-in/register)
+    - edit profile
+- Sellers:
+    - list new items
+    - track and manage their listed items
+    - respond to inquiries from buyers (messages)
+    - print shipping forms for sold items
+- Buyers:
+    - browse items via various filters
+    - engage with sellers (messages)
+    - add items to shopping cart
+    - proceed to checkout with their shopping cart (simulate payment process)
+- Admins:
+    - elevate user to admin status
+    - introduce new categories/filters/conditions
+    - oversee and ensure the smooth operation of the entire system
 
 ### Database and project UML diagram
 
@@ -9,6 +31,10 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 ### Database
 
 [Database Folder](./database)
+
+### Mockups
+
+![img](docs/Mockups.jpg)
 
 ### Transactions
 
