@@ -1,0 +1,82 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* Fundo branco */
+    padding: 20px;
+}
+
+/* Estilo do contêiner */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilo do conteúdo */
+.content {
+    text-align: center;
+}
+
+/* Estilo do formulário de criação de conta */
+.create-account-form {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fundo cinza claro */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px;
+}
+
+/* Estilo do título "Create Account" */
+h2 {
+    color: #4CAF50; /* Azul claro */
+    margin-bottom: 20px;
+}
+
+/* Estilo dos campos de entrada */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo do botão "Create Account" */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Verde mais escuro */
+}
+
+/* Estilo do link "Login" */
+.login-link a {
+    color: #4CAF50; /* Azul claro */
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
