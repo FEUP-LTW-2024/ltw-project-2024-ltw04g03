@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
-    <!-- Link to your CSS file for styling -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
+<?php
+    include_once("../templates/header.php")
+?>
+    <?php
+    //everytime we want a message to appear the following code should be inserted
+        print_header();
+        if (isset($_SESSION['message']))
+        {
+            echo "<div class='erro'>" . $_SESSION['message'] . "</div>";
+        }
+        unset($_SESSION['message']);
+        ?>
 <form action="../database/create_account.php" method="post">
     <h2>Create Account</h2>
     <label for="name">Name:</label>
@@ -22,7 +23,7 @@
     <input type="submit" value="Create Account">
 </form>
 
-Already have an account? <a href="Login.html">Login</a>
+Already have an account? <a href="LoginPage.php">Login</a>
 
 </body>
 </html>
