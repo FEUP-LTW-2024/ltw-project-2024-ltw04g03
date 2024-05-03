@@ -57,6 +57,12 @@ input[type="password"] {
     border-radius: 5px;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: rgb(214, 233, 245);
+}
+
 /* Estilo do botão "Create Account" */
 input[type="submit"] {
     width: 100%;

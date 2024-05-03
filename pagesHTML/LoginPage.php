@@ -9,13 +9,15 @@
     unset($_SESSION['message']);
     ?>
 
+<link rel="stylesheet" href="Login.css">
+
 
 <form action="../database/login.php" method="post">
     <h2>Login</h2>
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" value="" required>
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+    <input type="password" id="password" name="password" value="" required>
 
     <input type="submit" value="Login">
 </form>

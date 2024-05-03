@@ -10,6 +10,9 @@
         }
         unset($_SESSION['message']);
         ?>
+
+<link rel='stylesheet' href = 'CreateAccount.css'>
+
 <form action="../database/create_account.php" method="post">
     <h2>Create Account</h2>
     <label for="name">Name:</label>
