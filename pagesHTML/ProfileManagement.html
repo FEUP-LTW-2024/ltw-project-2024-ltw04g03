@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - TechTudo</title>
+    <link rel="stylesheet" href="styles.css"> <!-- arquivo CSS futuro -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../docs/TechTudo_logo.png" alt="Logo do site">
+            <a href="shoppingcart.html">Shopping Cart</a>
+        </div>
+        <div class="account">
+            <a href="login.html">Login/Register</a> <!-- Botão de Login/Register -->
+            <a href="notifications.html">Notifications</a> <!-- Botão de Notificações -->
+        </div>
+    </header>
+
+    <div class="edit-profile-container">
+        <h2>Editar Perfil</h2>
+        <div class="profile-picture-container">
+            <img src="user-avatar.jpg" alt="Foto de Perfil" class="profile-picture">
+            <button type="button">Adicionar Nova Imagem</button>
+        </div>
+        <form action="__.php" method="post"> <!-- Completar com o codigo php -->
+            <ul>
+                <li>
+                    <label for="username">Nome de Usuário:</label>
+                    <input type="text" id="username" name="username" value="Nome de Usuário Atual" required>
+                </li>
+                <li>
+                    <label for="distrito">Distrito:</label>
+                    <input type="text" id="distrito" name="distrito" value="Distrito Atual" required>
+                </li>
+                <li>
+                    <label for="concelho">Concelho:</label>
+                    <input type="text" id="concelho" name="concelho" value="Concelho Atual" required>
+                </li>
+                <li>
+                    <label for="freguesia">Freguesia:</label>
+                    <input type="text" id="freguesia" name="freguesia" value="Freguesia Atual" required>
+                </li>
+                <li>
+                    <label for="rua">Rua:</label>
+                    <input type="text" id="rua" name="rua" value="Rua Atual" required>
+                </li>
+                <li>
+                    <label for="codigo_postal">Código Postal:</label>
+                    <input type="text" id="codigo_postal" name="codigo_postal" value="Código Postal Atual" required>
+                </li>
+            </ul>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; TechTudo - 2024 | Desenvolvido por Álvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
+    </footer>
+</body>
+</html>
+
+

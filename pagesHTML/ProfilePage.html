@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário - TechTudo</title>
+    <link rel="stylesheet" href="styles.css"> <!-- arquivo CSS futuro -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../docs/TechTudo_logo.png" alt="Logo do site">
+            <a href="shoppingcart.html">Shopping Cart</a>
+        </div>
+        <div class="account">
+            <a href="login.html">Login/Register</a> <!-- Botão de Login/Register---temos de ver depois como vamos fazer isto para não aparecer quando o utilizador tiver já conta criada -->
+            <a href="notifications.html">Notifications</a> <!-- Botão de Notificações -->
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <img src="user-avatar.jpg" alt="Foto de Perfil" class="profile-picture">
+        <div class="profile-info">
+            <?php
+
+                // Exibir as informações na página
+                echo "<h2>$username</h2>";
+                echo "<p>Endereço de Faturação:</p>";
+                echo "<p>Distrito: $distrito</p>";
+                echo "<p>Concelho: $concelho</p>";
+                echo "<p>Freguesia: $freguesia</p>";
+                echo "<p>Rua: $rua</p>";
+                echo "<p>Código Postal: $codigo_postal</p>";
+            ?>
+            <a href="ProfileManagement.html" class="edit-button">Editar Perfil</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; TechTudo - 2024 | Desenvolvido por Álvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
+    </footer>
+</body>
+</html>
+
