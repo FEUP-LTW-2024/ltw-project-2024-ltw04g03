@@ -1,3 +1,6 @@
+
+<?php include_once ("../templates/footer.php"); ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <header>
         <div class="logo">
             <img src="../docs/TechTudo_logo.png" alt="Logo do site">
-            <a href="shoppingcart.html">Shopping Cart</a>
+            <a href="ShoppingCart.php">Shopping Cart</a>
         </div>
         <div class="filter-bar">
             <form>
@@ -73,8 +76,7 @@
 
     <div class="listings">
     </div>
-    <footer>
-        <p>&copy;  TechTudo - 2024 | Developed by Álvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
-    </footer>
+    
+    <?php print_footer(); ?>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
-    include_once("../templates/header.php")
+    include_once("../templates/header.php");
+    include_once("../templates/footer.php");
 ?>
     <?php
     //everytime we want a message to appear the following code should be inserted
@@ -28,5 +29,6 @@
 
 Already have an account? <a href="LoginPage.php">Login</a>
 
+<?php print_footer(); ?>
 </body>
 </html>

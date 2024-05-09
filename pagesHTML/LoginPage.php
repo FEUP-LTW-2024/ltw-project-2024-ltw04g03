@@ -1,7 +1,9 @@
 <?php
     include_once("../templates/header.php");
+    include_once("../templates/footer.php");
 
     print_header();
+    
     if (isset($_SESSION['message']))
     {
         echo "<div class='erro'>" . $_SESSION['message'] . "</div>";
@@ -25,5 +27,6 @@
 <!-- to facilitate styling this will need to be changed (probably idk) -->
 Don't have an account yet? <a href="RegisterPage.php">Create one!</a>
 
+    <?php print_footer(); ?>
 </body>
 </html>

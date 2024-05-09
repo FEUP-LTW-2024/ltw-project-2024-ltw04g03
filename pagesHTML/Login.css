@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+header {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Estilo do corpo da página */
 body {
     font-family: Arial, sans-serif;
@@ -105,6 +114,26 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
+footer {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .notification button:hover {
     background-color: #45a049; /* Verde mais escuro */
+}
+
+footer {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

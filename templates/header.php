@@ -14,15 +14,9 @@ function print_header() { ?>
 
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo do site">
-            <h1>Nome do site</h1>
+            <img src="../docs/TechTudo_logo.png" alt="Logo do site">
+            <a href="shoppingcart.html">Shopping Cart</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Adicionar Item</a></li>
-                <li><a href="#">Conta</a></li>
-            </ul>
-        </nav>
     </header>
 
 <?php

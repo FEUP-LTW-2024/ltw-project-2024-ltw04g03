@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Perfil - TechTudo</title>
-    <link rel="stylesheet" href="styles.css"> <!-- arquivo CSS futuro -->
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="../docs/TechTudo_logo.png" alt="Logo do site">
-            <a href="shoppingcart.html">Shopping Cart</a>
-        </div>
-        <div class="account">
-            <a href="login.html">Login/Register</a> <!-- Botão de Login/Register -->
-            <a href="notifications.html">Notifications</a> <!-- Botão de Notificações -->
-        </div>
-    </header>
+<?php
+    include_once("../templates/header.php");
+    include_once("../templates/footer.php");
+    print_header();
+?>
+
+<link rel="stylesheet" href="profile.css">
 
     <div class="edit-profile-container">
         <h2>Editar Perfil</h2>
@@ -55,9 +43,9 @@
         </form>
     </div>
 
-    <footer>
-        <p>&copy; TechTudo - 2024 | Desenvolvido por Álvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
-    </footer>
+    
+
+    <?php print_footer(); ?>
 </body>
 </html>
 

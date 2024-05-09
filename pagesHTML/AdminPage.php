@@ -1,10 +1,15 @@
+<?php
+ 
+    include_once("../templates/footer.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css"> <!-- futuro arquivo em css -->
+    <link rel="stylesheet" href="AdminPage.css"> 
 </head>
 <body>
 
@@ -77,9 +82,7 @@
     </div>
 
 
-    <footer>
-        <p>&copy;  TechTudo - 2024 | Developed by Álvaro Torres, Guilherme Ferreira e Ricardo Parreira</p>
-    </footer>
+    <?php print_footer(); ?>
 
 </body>
 </html>
