@@ -73,9 +73,31 @@
         </div>
     </header>
 
+<!-- Para ser revisto -->
+    <main>
+        <div class="background">
+            <div class="page-inner-content">
+                <h1 class="section-title">Hot Deals</h1>
+                <div class="underline"></div>
+                <div class="Products-row">
+                    <?php
+                    // Gera links para os produtos de 1 a 6
+                    for ($i = 1; $i <= 6; $i++) {
+                        echo '<a href="pagina_produto_' . $i . '.php" class="Product-link">';
+                        echo '<div class="Products">';
+                        echo '<p class="SellersName">Vendedor ' . $i . '</p>'; //Nome do vendedor
+                        echo '<img src="Produto_' . $i . '" alt="" />'; //Nome do produto
+                        echo '<p class="Price">EURO</p> <span>EURO</span>'; //Preço do Produto
+                        echo '<p class="Estado">Condição do Produto</p>'; //Condição do Produto
+                        echo '</div>';
+                        echo '</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="listings">
-    </div>
     
     <?php print_footer(); ?>
 </body>
