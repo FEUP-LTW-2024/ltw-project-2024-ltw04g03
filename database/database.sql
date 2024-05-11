@@ -47,6 +47,18 @@ CREATE TABLE User (
   email TEXT NOT NULL
 );
 
+CREATE TABLE AD (
+  id INTEGER PRIMARY KEY,
+  seller_name TEXT NOT NULL,
+  device_name TEXT NOT NULL,
+  device_model TEXT NOT NULL,
+  device_condition TEXT,
+  location TEXT,
+  price DECIMAL(10, 2) NOT NULL,
+  image_path TEXT,
+  description TEXT
+);
+
 CREATE TABLE Transaction_ (
     id INTEGER PRIMARY KEY,
     device_id INTEGER,

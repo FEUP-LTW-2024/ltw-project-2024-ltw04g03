@@ -18,7 +18,8 @@
       $stmt->execute();
       $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if($user){
-      //$_SESSION['login'] = true;
+      $_SESSION['username'] = $username;
+      $_SESSION['loggedin'] = true;
       $_SESSION['message'] = 'LOGIN SUCESSFUL';
       header('Location: ../pagesHTML/Mainpage.html');
       exit();
