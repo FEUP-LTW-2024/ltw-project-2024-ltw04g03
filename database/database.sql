@@ -48,11 +48,10 @@ CREATE TABLE User (
 );
 
 CREATE TABLE AD (
-  id INTEGER PRIMARY KEY,
-  seller_name TEXT NOT NULL,
-  device_name TEXT NOT NULL,
-  device_model TEXT NOT NULL,
-  device_condition TEXT,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  brand TEXT NOT NULL,
+  model TEXT NOT NULL,
+  condition TEXT,
   location TEXT,
   price DECIMAL(10, 2) NOT NULL,
   image_path TEXT,

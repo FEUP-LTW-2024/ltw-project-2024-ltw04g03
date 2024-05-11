@@ -21,7 +21,7 @@
       $_SESSION['username'] = $username;
       $_SESSION['loggedin'] = true;
       $_SESSION['message'] = 'LOGIN SUCESSFUL';
-      header('Location: ../pagesHTML/Mainpage.html');
+      header('Location: ../pagesHTML/Mainpage.php');
       exit();
     } 
     else{

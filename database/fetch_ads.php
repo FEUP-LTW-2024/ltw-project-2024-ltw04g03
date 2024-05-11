@@ -5,10 +5,8 @@
     // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $stmt = $pdo->prepare("SELECT * FROM devices");
+    $stmt = $pdo->prepare("SELECT * FROM AD");
     $stmt->execute();
 
-    $devices = $stmt->fetchAll();
-    //$devices array now contains every fetched device
-
-?>
+    $ads = $stmt->fetchAll();
+    //$ads array now contains every fetched ad

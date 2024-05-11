@@ -20,6 +20,15 @@ body {
     height: 100vh;
 }
 
+header {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Estilo do conteúdo */
 .content {
     text-align: center;
@@ -85,4 +94,14 @@ input[type="submit"]:hover {
 
 .login-link a:hover {
     text-decoration: underline;
+}
+
+footer {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

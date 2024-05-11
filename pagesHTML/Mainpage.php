@@ -67,6 +67,9 @@
         </form>
     </div>
     <div class="account">
+        <?php if($_SESSION['loggedin']){ ?>
+            <a href="NewAd.php">New ad</a>
+        <?php } ?>
         <a href="LoginPage.php">Login/Register</a>
         <a href="notifications.html">Notifications</a> <!-- Notifications button -->
     </div>
@@ -80,16 +83,18 @@
             <div class="Products-row">
                 <?php
                 
-                include_once("../database/fetch_devices.php");
+                include_once("../database/fetch_ads.php");
 
                 // Loop through the fetched devices and display them
-                foreach ($devices as $device) {
+                foreach ($ads as $ad) {
                     //echo '<a href="pagina_produto_' . $device['id'] . '.php" class="Product-link">';
                     echo '<div class="Products">';
-                    echo '<p>ID: ' . $device['id'] . '</p>';
-                    echo '<p>Name: ' . $device['name'] . '</p>';
-                    echo '<p>Storage: ' . $device['storage'] . '</p>';
-                    echo '<p>RAM: ' . $device['ram'] . '</p>';
+                    echo '<p>ID: ' . $ad['id'] . '</p>';
+                    echo '<p>Name: ' . $ad['brand'] . '</p>';
+                    echo '<p>Name: ' . $ad['model'] . '</p>';
+                    echo '<p>Storage: ' . $ad['description'] . '</p>';
+                    echo '<p>RAM: ' . $ad['price'] . '</p>';
+                    echo '<p>Seller: ' . $_SESSION['username'] . '<p>'; //acho que meti a aparecer só o nome do user que está logged in
                     echo '</div>';
                     echo '</a>';
                 }
