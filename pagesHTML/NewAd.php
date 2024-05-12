@@ -6,6 +6,7 @@
 ?>
 
 <link rel='stylesheet' href = 'CreateAccount.css'>
+<link rel="stylesheet" href="style.css"> 
 
 <form action="../database/create_ad.php" method="post">
     <h2>Create new ad</h2>

@@ -9,9 +9,10 @@
         echo "<div class='erro'>" . $_SESSION['message'] . "</div>";
     }
     unset($_SESSION['message']);
-    ?>
+?>
 
 <link rel="stylesheet" href="Login.css">
+<link rel="stylesheet" href="style.css">
 
 
 <form action="../database/login.php" method="post">
@@ -27,6 +28,6 @@
 <!-- to facilitate styling this will need to be changed (probably idk) -->
 Don't have an account yet? <a href="RegisterPage.php">Create one!</a>
 
-    <?php print_footer(); ?>
+<?php print_footer(); ?>
 </body>
 </html>

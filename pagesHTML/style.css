@@ -1,0 +1,86 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo básico para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Ajuste a altura conforme necessário */
+}
+
+.filter-bar form {
+    display: flex;
+    align-items: center;
+}
+
+.filter-bar label, .filter-bar select {
+    margin-right: 10px;
+}
+
+.filter-bar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.background{
+    color: black;
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #038cfc;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.listings {
+    padding: 20px;
+}
+
+.listings img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo dos links */
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Afastar os elementos "Shopping Cart" e "Login/Register" */
+.account a {
+    margin-right: 10px; /* Ajuste o valor conforme necessário */
+}

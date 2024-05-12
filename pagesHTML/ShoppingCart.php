@@ -1,6 +1,8 @@
 <?php
-    
+    include_once("../templates/header.php");
     include_once("../templates/footer.php");
+
+    print_header();
     
 ?>
 
@@ -11,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="shoppingcart.css"> <!-- futuro arquivo em css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Shopping Cart</h1>
@@ -60,6 +63,6 @@
         </form>
     </div>
 
-    <?php print_footer(); ?>
+<?php print_footer(); ?>
 </body>
 </html>

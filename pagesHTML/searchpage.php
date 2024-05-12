@@ -1,7 +1,25 @@
-
 <?php
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
+    
+    // Access the parameters
+    $brand = isset($_GET['brand']) ? $_GET['brand'] : 'all';
+    $model = isset($_GET['model']) ? $_GET['model'] : 'all';
+    $megapixels = isset($_GET['megapixels']) ? $_GET['megapixels'] : 'all';
+    $price = isset($_GET['price']) ? $_GET['price'] : 'all';
+    $display = isset($_GET['display']) ? $_GET['display'] : 'all';
+
+    // Validate and sanitize the parameters
+    $brand = filter_var($brand, FILTER_SANITIZE_STRING);
+    $model = filter_var($model, FILTER_SANITIZE_STRING);
+    $megapixels = filter_var($megapixels, FILTER_SANITIZE_STRING);
+    $price = filter_var($price, FILTER_SANITIZE_STRING);
+    $display = filter_var($display, FILTER_SANITIZE_STRING);
+
+    // Use the parameters to filter your results
+    // This depends on how your data is stored, so I can't provide a specific implementation
+
+    print_header();
     
 ?>
 
@@ -14,43 +32,6 @@
     <link rel="stylesheet" href="searchpage.css"> <!-- futuro arquivo em css -->
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <img src="../docs/TechTudo_logo.png" alt="Logo do site">
-            <a href="shoppingcart.html">Shopping Cart</a>
-        </div>
-        <div class="filter-bar">
-            <form>
-                <label for="brand">Brand:</label>
-                <select id="brand">
-                    <option value="all">All brands</option>
-                </select>
-                <label for="model">Year:</label>
-                <select id="model">
-                    <option value="all">All years</option>
-                </select>
-                <label for="megapixels">Storage:</label>
-                <select id="megapixels">
-                    <option value="all">All</option>
-                </select>
-                <label for="price">Memory:</label>
-                <select id="price">
-                    <option value="all">All</option>
-                </select>
-                <label for="display">Display:</label>
-                <select id="display">
-                    <option value="all">All displays</option>
-                </select>
-                <button type="submit">Filter</button>
-            </form>
-        </div>
-        <div class="account">
-            <a href="login.html">Login/Register</a> <!-- Login/Register button -->
-            <a href="notifications.html">Notifications</a> <!-- Notifications button -->
-        </div>
-    </header>
-
     <div class="search">
         <label>[Applied Filter]</label>
         <label>Filter by:</label>
@@ -63,6 +44,7 @@
             <select id="condition">
                 <option value="price">All</option>
             <select>
+            <button type="submit">Filter</button>
         </form>
     </div>
 

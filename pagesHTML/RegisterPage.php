@@ -13,6 +13,7 @@
         ?>
 
 <link rel='stylesheet' href = 'CreateAccount.css'>
+<link rel="stylesheet" href="style.css">
 
 <form action="../database/create_account.php" method="post">
     <h2>Create Account</h2>
