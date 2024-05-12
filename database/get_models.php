@@ -1,5 +1,7 @@
 <?php
 include_once("../database/model.class.php");
+header('Content-Type: application/json');
+
 
 $brandid = $_GET['brandId'];
 

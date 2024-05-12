@@ -65,9 +65,11 @@ function updateModels() {
 }
 
 function fetchModels(brandId) {
+    console.log('fetchModels called');
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
-    xhr.onreadystatechange = function() {
+    console.log('fetchModels called');
+    xhr.onreadystatechange = function() { 
         if (this.readyState == 4 && this.status == 200) {
             var models = JSON.parse(this.responseText);
             console.log(models);
