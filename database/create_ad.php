@@ -3,6 +3,10 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include your database connection code here
     $db = new PDO('sqlite:../database/database.db');
+    ?>
+
+
+<?php
 
     // Prepare and bind parameters
     $stmt = $db->prepare("INSERT INTO AD (seller_username, brand, model, condition, location, price, image_path, description) VALUES (:seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");

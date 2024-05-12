@@ -90,10 +90,10 @@
                     //echo '<a href="pagina_produto_' . $device['id'] . '.php" class="Product-link">';
                     echo '<div class="Products">';
                     echo '<p>ID: ' . $ad['id'] . '</p>';
-                    echo '<p>Name: ' . $ad['brand'] . '</p>';
-                    echo '<p>Name: ' . $ad['model'] . '</p>';
-                    echo '<p>Storage: ' . $ad['description'] . '</p>';
-                    echo '<p>RAM: ' . $ad['price'] . '</p>';
+                    echo '<p>Brand: ' . $ad['brand'] . '</p>';
+                    echo '<p>Model: ' . $ad['model'] . '</p>';
+                    echo '<p>Description: ' . $ad['description'] . '</p>';
+                    echo '<p>Price: ' . $ad['price'] . '$' . '</p>';
                     echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; //acho que meti a aparecer só o nome do user que está logged in
                     echo '</div>';
                     echo '</a>';

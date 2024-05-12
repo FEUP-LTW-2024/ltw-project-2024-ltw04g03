@@ -12,31 +12,61 @@
 
     <label for="brand">Brand:</label>
     <select id="brand" name="brand">
-        <option value="Samsung">Samsung</option>
-        <option value="Xiaomi">Xiaomi</option>
-        <option value="Apple">Apple</option>
-        <option value="Google">Google</option>
-        <option value="Huawei">Huawei</option>
-        <option value="Nokia">Nokia</option>
-        <option value="Microsoft">Microsoft</option>
-        <option value="Oppo">Oppo</option>
+        <?php
+        // Connect to your database
+        $db = new SQLite3('../database/database.db');
+
+        // Fetch brands
+        $result = $db->query("SELECT name FROM brands");
+
+        // Output brands as <option> elements
+        while ($row = $result->fetchArray()) {
+            echo '<option value="' . $row['name'] . '">' . $row['name'] . '</option>';
+        }
+        ?>
     </select>
 
-    <!-- POR FAZER. de preferencia com o GetModelByBrand-->
-   <!-- Present all the models of the selected brand as options 
-<label for="model">Model:</label>
-<select id="model" name="model">
-<?php/*
-    include_once("../database/fetch_models.php");
+    <label for="model">Model:</label>
+    <select id="model" name="model">
+        <!-- Models will be populated here -->
+    </select>
+</form>
 
-    // Loop through the fetched models and display them
-    foreach ($models as $model) {
-        $model_name = $model['model']; // Corrected typo here
 
-        echo "<option value='$model_name'>$model_name</option>";
-    }*/
-?>
-</select>-->
+    <label for="model">Model:</label>
+    <select id="model" name="model">
+        <!-- Models will be populated here -->
+    </select>
+</form>
+
+<script>
+function updateModels() {
+    var brand = document.getElementById('brand').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../database/get_models.php?brand=' + brand, true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var models = JSON.parse(this.responseText);
+            var modelSelect = document.getElementById('model');
+
+            // Clear existing options
+            modelSelect.innerHTML = '';
+
+            // Add new options
+            for (var i = 0; i < models.length; i++) {
+                var option = document.createElement('option');
+                option.value = models[i];
+                option.text = models[i];
+                modelSelect.appendChild(option);
+            }
+        }
+    };
+    xhr.send();
+}
+</script>
+
+
 
     <label for="description">Description:</label>
     <input type="text" id="description" name="description" required>
@@ -60,6 +90,7 @@
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
 
+ 
 
     <input type="submit" value="Create Ad">
 </form>
