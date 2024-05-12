@@ -7,16 +7,17 @@
 
 <link rel='stylesheet' href = 'CreateAccount.css'>
 
+
+<!-- Gets the brands directly from the databse -->
 <form action="../database/create_ad.php" method="post">
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
     <select id="brand" name="brand">
         <?php
-        // Connect to your database
+
         $db = new SQLite3('../database/database.db');
 
-        // Fetch brands
         $result = $db->query("SELECT name FROM brands");
 
         // Output brands as <option> elements
@@ -26,6 +27,8 @@
         ?>
     </select>
 
+
+<!-- Gets the models of the defined brand -->
     <label for="model">Model:</label>
     <select id="model" name="model">
         <!-- Models will be populated here -->
@@ -41,20 +44,41 @@
 
 <script>
 function updateModels() {
-    var brand = document.getElementById('brand').value;
+    console.log('updateModels called');
 
+    var brandName = document.getElementById('brand').value;
+    //console.log(brandName);
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../database/get_models.php?brand=' + brand, true);
+    xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var brandId = this.responseText;
+            //console.log(brandId);
+            var trimmedbrandId = brandId.replace(/^[a-zA-Z]+/, ''); //it was giving Aplle3 instead of just 3
+            //console.log(trimmedbrandId);
+            
+            fetchModels(trimmedbrandId);
+            
+        }
+    };
+    xhr.send();
+}
+
+function fetchModels(brandId) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var models = JSON.parse(this.responseText);
+            console.log(models);
+
             var modelSelect = document.getElementById('model');
 
             // Clear existing options
             modelSelect.innerHTML = '';
 
             // Add new options
-            for (var i = 0; i < models.length; i++) {
+           for (var i = 0; i < models.length; i++) {
                 var option = document.createElement('option');
                 option.value = models[i];
                 option.text = models[i];
@@ -64,6 +88,9 @@ function updateModels() {
     };
     xhr.send();
 }
+
+// Attach updateModels to the onchange event of the brand dropdown
+document.getElementById('brand').onchange = updateModels;
 </script>
 
 

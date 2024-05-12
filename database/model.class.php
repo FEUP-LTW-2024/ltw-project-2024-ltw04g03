@@ -12,9 +12,9 @@ class Model {
         return $stmt->fetchAll();
     }
 
-    public function getModelsByBrand($name) {
-        $stmt = $this->pdo->prepare("SELECT * FROM models WHERE name = :name");
-        $stmt->execute(['name' => $name]);
+    public function getModelsByBrand($brand_id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM models WHERE brand_id = :brand_id");
+        $stmt->execute(['brand_id' => $brand_id]);
         return $stmt->fetchAll();
     }
 }
