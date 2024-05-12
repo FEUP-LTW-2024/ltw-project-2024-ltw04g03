@@ -94,7 +94,7 @@
                     echo '<p>Name: ' . $ad['model'] . '</p>';
                     echo '<p>Storage: ' . $ad['description'] . '</p>';
                     echo '<p>RAM: ' . $ad['price'] . '</p>';
-                    echo '<p>Seller: ' . $_SESSION['username'] . '<p>'; //acho que meti a aparecer só o nome do user que está logged in
+                    echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; //acho que meti a aparecer só o nome do user que está logged in
                     echo '</div>';
                     echo '</a>';
                 }

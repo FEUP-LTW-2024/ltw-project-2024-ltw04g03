@@ -5,7 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new PDO('sqlite:../database/database.db');
 
     // Prepare and bind parameters
-    $stmt = $db->prepare("INSERT INTO AD (brand, model, condition, location, price, image_path, description) VALUES (:brand, :model, :condition, :location, :price, :image_path, :description)");
+    $stmt = $db->prepare("INSERT INTO AD (seller_username, brand, model, condition, location, price, image_path, description) VALUES (:seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
+    $stmt->bindParam(':seller_username', $seller);
     $stmt->bindParam(':brand', $brand);
     $stmt->bindParam(':model', $model);
     $stmt->bindParam(':condition', $condition);
@@ -15,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':description', $description);
 
     // Set parameters from form data
+    $seller = $_SESSION['username']; //não está a registar o username não sei pq
     $brand = $_POST['brand'];
     $model = 'default'; //to be changed later
     $condition = $_POST['condition'];
@@ -34,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Handle file upload error
             echo "Error uploading file.";
+            header('Location: ../pagesHTML/NewAd.php');
             exit();
         }
     } else {

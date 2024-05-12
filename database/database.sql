@@ -49,6 +49,7 @@ CREATE TABLE User (
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  seller_username TEXT,
   brand TEXT NOT NULL,
   model TEXT NOT NULL,
   condition TEXT,
