@@ -1,18 +1,25 @@
 <?php
-include_once("../database/model.class.php");
-header('Content-Type: application/json');
+// Include your database connection code here
+$db = new PDO('sqlite:../database/database.db');
 
+// Check if the brand ID parameter is provided
+if(isset($_GET['brandId'])) {
+    $brandId = $_GET['brandId'];
 
-$brandid = $_GET['brandId'];
+    // Prepare a statement to fetch models by brand ID
+    $stmt = $db->prepare("SELECT name FROM models WHERE brand_id = :brandId");
+    $stmt->bindParam(':brandId', $brandId);
+    $stmt->execute();
 
-$models = getModelsByBrand($brandid);
+    // Fetch model names
+    $modelNames = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-$modelNames = array();
-foreach ($models as $model) {
-    $modelNames[] = $model['name'];
+    // Output model names as JSON
+    header('Content-Type: application/json');
+    echo json_encode($modelNames);
+} else {
+    // Brand ID parameter not provided, return an error response
+    http_response_code(400);
+    echo json_encode(array("error" => "Brand ID parameter is missing"));
 }
-
-var_dump($modelNames);
-
-echo json_encode($modelNames);
 ?>

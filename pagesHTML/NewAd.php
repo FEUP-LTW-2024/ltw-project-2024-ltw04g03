@@ -33,14 +33,8 @@
     <select id="model" name="model">
         <!-- Models will be populated here -->
     </select>
-</form>
 
 
-    <label for="model">Model:</label>
-    <select id="model" name="model">
-        <!-- Models will be populated here -->
-    </select>
-</form>
 
 <script>
 function updateModels() {
@@ -65,11 +59,12 @@ function updateModels() {
 }
 
 function fetchModels(brandId) {
-    console.log('fetchModels called');
+    //console.log('fetchModels called');
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
     console.log('fetchModels called');
     xhr.onreadystatechange = function() { 
+        console.log('entrei na função');
         if (this.readyState == 4 && this.status == 200) {
             var models = JSON.parse(this.responseText);
             console.log(models);
@@ -119,7 +114,7 @@ document.getElementById('brand').onchange = updateModels;
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
 
- 
+  
 
     <input type="submit" value="Create Ad">
 </form>

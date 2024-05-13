@@ -93,8 +93,9 @@
                     echo '<p>Brand: ' . $ad['brand'] . '</p>';
                     echo '<p>Model: ' . $ad['model'] . '</p>';
                     echo '<p>Description: ' . $ad['description'] . '</p>';
+                    echo '<p>Condition: ' . $ad['condition'] . '</p>';
                     echo '<p>Price: ' . $ad['price'] . '$' . '</p>';
-                    echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; //acho que meti a aparecer só o nome do user que está logged in
+                    echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; 
                     echo '</div>';
                     echo '</a>';
                 }

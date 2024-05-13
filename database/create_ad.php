@@ -1,12 +1,11 @@
 <?php
 // Check if the form is submitted
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include your database connection code here
     $db = new PDO('sqlite:../database/database.db');
-    ?>
-
-
-<?php
+    
 
     // Prepare and bind parameters
     $stmt = $db->prepare("INSERT INTO AD (seller_username, brand, model, condition, location, price, image_path, description) VALUES (:seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
@@ -20,13 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':description', $description);
 
     // Set parameters from form data
-    $seller = $_SESSION['username']; //não está a registar o username não sei pq
+    $seller = $_SESSION['username']; 
     $brand = $_POST['brand'];
-    $model = 'default'; //to be changed later
+    $model = $_POST['model']; 
     $condition = $_POST['condition'];
     $location = $_POST['location'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+  
 
     // Check if file is uploaded
     if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // If no file is uploaded, set image_path to NULL or any default image path
         $image_path = null;
+        
     }
 
     // Execute the prepared statement
