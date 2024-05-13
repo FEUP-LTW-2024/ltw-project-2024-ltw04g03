@@ -19,6 +19,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo img {
@@ -61,13 +64,8 @@ footer {
     width: 100%;
 }
 
-.listings {
-    padding: 20px;
-}
-
-.listings img {
-    max-width: 100%;
-    height: auto;
+.main-page footer, .shopping-cart footer {
+    position: static;
 }
 
 /* Estilo dos links */

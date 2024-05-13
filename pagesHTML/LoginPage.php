@@ -25,8 +25,9 @@
     <input type="submit" value="Login">
 </form>
 
-<!-- to facilitate styling this will need to be changed (probably idk) -->
-Don't have an account yet? <a href="RegisterPage.php">Create one!</a>
+<div class="create-account">
+    Don't have an account yet? <a href="RegisterPage.php">Create one!</a>
+</div>
 
 <?php print_footer(); ?>
 </body>

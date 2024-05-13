@@ -24,7 +24,6 @@
                 <?php
                 
                 include_once("../database/fetch_ads.php");
-                // EDITAR PARA POR CSS PARA PREÇO ...
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
                     //echo '<a href="pagina_produto_' . $device['id'] . '.php" class="Product-link">';
@@ -33,8 +32,8 @@
                     echo '<p>Brand: ' . $ad['brand'] . '</p>';
                     echo '<p>Model: ' . $ad['model'] . '</p>';
                     echo '<p>Description: ' . $ad['description'] . '</p>';
-                    echo '<p>Condition: ' . $ad['condition'] . '</p>';
-                    echo '<p>Price: ' . $ad['price'] . '$' . '</p>';
+                    echo '<p class="Condition">Condition: ' . $ad['condition'] . '</p>';
+                    echo '<p class="Price">Price: ' . $ad['price'] . '$' . '</p>';
                     echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; 
                     echo '</div>';
                     echo '</a>';

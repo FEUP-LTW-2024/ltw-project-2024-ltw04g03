@@ -28,7 +28,9 @@
     <input type="submit" value="Create Account">
 </form>
 
-Already have an account? <a href="LoginPage.php">Login</a>
+<div class="login-link">
+    Already have an account? <a href="LoginPage.php">Login</a>
+</div>
 
 <?php print_footer(); ?>
 </body>
