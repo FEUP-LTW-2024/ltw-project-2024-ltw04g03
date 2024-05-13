@@ -28,7 +28,9 @@
     color: #4caf50; /* Cor verde para o preço */
 }
 
-
+.Condition {
+    font-weight: bold; /* Deixa o preço em negrito */
+}
 
 /* Estilo para o título "Hot Deals" */
 .section-title {

@@ -29,7 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Page</title>
-    <link rel="stylesheet" href="searchpage.css"> <!-- futuro arquivo em css -->
+    <link rel="stylesheet" href="style.css"> <!-- futuro arquivo em css -->
 </head>
 <body>
     <div class="search">

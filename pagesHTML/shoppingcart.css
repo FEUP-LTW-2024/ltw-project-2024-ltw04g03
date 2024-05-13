@@ -1,19 +1,65 @@
-header {
-    background-color: #038cfc;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
+h1, h2 {
+    color: #333;
+    padding: 10px;
+}
 
-footer {
-    background-color: #038cfc;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.selected-items, .total-price-items, .shipping-price, .item-price+shipping-price, .checkout-form {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.selected-items ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+p {
+    padding: 10px;
+}
+
+.checkout-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.checkout-form h2 {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.checkout-form input[type="text"] {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.checkout-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-form button:hover {
+    background-color: #45a049;
 }
