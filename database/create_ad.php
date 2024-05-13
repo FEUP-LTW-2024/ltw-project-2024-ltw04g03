@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     // Prepare and bind parameters
-    $stmt = $db->prepare("INSERT INTO AD (seller_username, brand, model, condition, location, price, image_path, description) VALUES (:seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
+    $stmt = $db->prepare("INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
+    $stmt->bindParam(':device_id', $device_id);
     $stmt->bindParam(':seller_username', $seller);
     $stmt->bindParam(':brand', $brand);
     $stmt->bindParam(':model', $model);
@@ -19,6 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':description', $description);
 
     // Set parameters from form data
+    $db2 = new SQLite3('../database/dabase.db');
+
+    $device_id = $db2->query("SELECT id FROM devices WHERE model_id");
+
+
     $seller = $_SESSION['username']; 
     $brand = $_POST['brand'];
     $model = $_POST['model']; 
