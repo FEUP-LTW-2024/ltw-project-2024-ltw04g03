@@ -1,26 +1,3 @@
-/* Reset de estilos padrão */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-header {
-    background-color: #038cfc;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Estilo do corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff; /* Fundo branco */
-    padding: 20px;
-}
-
 /* Estilo do contêiner */
 .container {
     display: flex;
@@ -47,7 +24,9 @@ body {
 h2 {
     color: #4CAF50; /* Azul claro */
     margin-bottom: 20px;
+    margin-top: 20px;
     text-align: center;
+    font-size: 35px;
 }
 
 /* Estilo dos campos de entrada */
@@ -87,6 +66,7 @@ input[type="submit"]:hover {
 
 /* Estilo do link para criar uma conta */
 .create-account {
+    text-decoration: none;
     text-align: center;
     margin-top: 20px;
 }
@@ -114,31 +94,6 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
-footer {
-    background-color: #038cfc;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 .notification button:hover {
     background-color: #45a049; /* Verde mais escuro */
-}
-
-footer {
-    background-color: #038cfc;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-a {
-    color: blue;
-    text-decoration: underline;
 }
