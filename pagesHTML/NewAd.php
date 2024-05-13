@@ -8,36 +8,90 @@
 <link rel='stylesheet' href = 'CreateAccount.css'>
 <link rel="stylesheet" href="style.css"> 
 
+
+<!-- Gets the brands directly from the databse -->
 <form action="../database/create_ad.php" method="post">
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
     <select id="brand" name="brand">
-        <option value="Samsung">Samsung</option>
-        <option value="Xiaomi">Xiaomi</option>
-        <option value="Apple">Apple</option>
-        <option value="Google">Google</option>
-        <option value="Huawei">Huawei</option>
-        <option value="Nokia">Nokia</option>
-        <option value="Microsoft">Microsoft</option>
-        <option value="Oppo">Oppo</option>
+        <?php
+
+        $db = new SQLite3('../database/database.db');
+
+        $result = $db->query("SELECT name FROM brands");
+
+        // Output brands as <option> elements
+        while ($row = $result->fetchArray()) {
+            echo '<option value="' . $row['name'] . '">' . $row['name'] . '</option>';
+        }
+        ?>
     </select>
 
-    <!-- POR FAZER. de preferencia com o GetModelByBrand-->
-   <!-- Present all the models of the selected brand as options 
-<label for="model">Model:</label>
-<select id="model" name="model">
-<?php/*
-    include_once("../database/fetch_models.php");
 
-    // Loop through the fetched models and display them
-    foreach ($models as $model) {
-        $model_name = $model['model']; // Corrected typo here
+<!-- Gets the models of the defined brand -->
+    <label for="model">Model:</label>
+    <select id="model" name="model">
+        <!-- Models will be populated here -->
+    </select>
 
-        echo "<option value='$model_name'>$model_name</option>";
-    }*/
-?>
-</select>-->
+
+
+<script>
+function updateModels() {
+    console.log('updateModels called');
+
+    var brandName = document.getElementById('brand').value;
+    //console.log(brandName);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var brandId = this.responseText;
+            //console.log(brandId);
+            var trimmedbrandId = brandId.replace(/^[a-zA-Z]+/, ''); //it was giving Aplle3 instead of just 3
+            //console.log(trimmedbrandId);
+            
+            fetchModels(trimmedbrandId);
+            
+        }
+    };
+    xhr.send();
+}
+
+function fetchModels(brandId) {
+    //console.log('fetchModels called');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
+    console.log('fetchModels called');
+    xhr.onreadystatechange = function() { 
+        console.log('entrei na função');
+        if (this.readyState == 4 && this.status == 200) {
+            var models = JSON.parse(this.responseText);
+            console.log(models);
+
+            var modelSelect = document.getElementById('model');
+
+            // Clear existing options
+            modelSelect.innerHTML = '';
+
+            // Add new options
+           for (var i = 0; i < models.length; i++) {
+                var option = document.createElement('option');
+                option.value = models[i];
+                option.text = models[i];
+                modelSelect.appendChild(option);
+            }
+        }
+    };
+    xhr.send();
+}
+
+// Attach updateModels to the onchange event of the brand dropdown
+document.getElementById('brand').onchange = updateModels;
+</script>
+
+
 
     <label for="description">Description:</label>
     <input type="text" id="description" name="description" required>
@@ -61,6 +115,7 @@
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
 
+  
 
     <input type="submit" value="Create Ad">
 </form>
