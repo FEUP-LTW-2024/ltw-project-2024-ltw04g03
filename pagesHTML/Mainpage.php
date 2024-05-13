@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTudo</title>
+    <link rel="stylesheet" href="MainPage.css">
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
@@ -23,7 +24,7 @@
                 <?php
                 
                 include_once("../database/fetch_ads.php");
-
+                // EDITAR PARA POR CSS PARA PREÇO ...
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
                     //echo '<a href="pagina_produto_' . $device['id'] . '.php" class="Product-link">';
