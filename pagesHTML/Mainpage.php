@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="MainPage.css">
     <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
+<body class="main-page">
 <main>
     <div class="background">
         <div class="page-inner-content">
