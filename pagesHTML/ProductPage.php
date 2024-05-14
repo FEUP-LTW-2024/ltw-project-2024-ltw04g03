@@ -48,7 +48,8 @@
         ?>
         <div class="button-container">
             <form action="../database/delete_ad.php" method="post">
-                <button type="submit">Delete ad</button>
+                <input type="hidden" name="ad_id" value="<?php echo $ad['id']; ?>">
+                <button type="submit">Delete ad</button> <!-- still not sending the id but ill do that when the permissions are fixed-->
             </form>
         </div>
         <?php //} ?>
