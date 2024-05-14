@@ -30,7 +30,8 @@ function print_header() { ?>
 
                     // Output brands as <option> elements
                     while ($row = $result->fetchArray()) {
-                        echo '<option value="' . $row['name'] . '">' . $row['name'] . '</option>';
+                        $selected = (isset($_GET['brand']) && $_GET['brand'] == $row['name']) ? 'selected' : '';
+                        echo '<option value="' . $row['name'] . '" ' . $selected . '>' . $row['name'] . '</option>';
                     }
                     ?>
                 </select>
@@ -60,8 +61,10 @@ function print_header() { ?>
 
                     // Output the options
                     foreach ($years as $year) {
-                        echo '<option value="' . $year . '">' . $year . '</option>';
+                        $selected = (isset($_GET['released_at']) && $_GET['released_at'] == $year) ? 'selected' : '';
+                        echo '<option value="' . $year . '" ' . $selected . '>' . $year . '</option>';
                     }
+                    
                     ?>
                 </select>
 
@@ -89,8 +92,10 @@ function print_header() { ?>
 
                     // Output the options
                     foreach ($storages as $storage) {
-                        echo '<option value="' . $storage . '">' . $storage . '</option>';
+                        $selected = (isset($_GET['storage']) && $_GET['storage'] == $storage) ? 'selected' : '';
+                        echo '<option value="' . $storage . '" ' . $selected . '>' . $storage . '</option>';
                     }
+                    
                     ?>
                 </select>
 
@@ -120,8 +125,10 @@ function print_header() { ?>
 
                     // Output the options
                     foreach ($rams as $ram) {
-                        echo '<option value="' . $ram . '">' . $ram . '</option>';
+                        $selected = (isset($_GET['RAM']) && $_GET['RAM'] == $ram) ? 'selected' : '';
+                        echo '<option value="' . $ram . '" ' . $selected . '>' . $ram . '</option>';
                     }
+                    
                     ?>
                 </select>
 
@@ -160,8 +167,10 @@ function print_header() { ?>
 
                     // Output the options
                     foreach ($cameras as $camera) {
-                        echo '<option value="' . $camera . '">' . $camera . '</option>';
+                        $selected = (isset($_GET['camera']) && $_GET['camera'] == $camera) ? 'selected' : '';
+                        echo '<option value="' . $camera . '" ' . $selected . '>' . $camera . '</option>';
                     }
+                    
                     ?>
                 </select>
 
