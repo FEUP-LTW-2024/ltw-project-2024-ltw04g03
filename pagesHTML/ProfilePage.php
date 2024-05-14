@@ -29,7 +29,7 @@ print_header();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="MainPage.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ProductPage.css">
 </head>
 <body>
 <main>
@@ -48,9 +48,13 @@ print_header();
                     <p>User not found.</p>
                 <?php endif; ?>
             </div>
-            <form action="../database/logout.php" method="post">
-                <button type="submit">Logout</button>
-            </form>
+
+            <div class="button-container">
+                <form action="../database/logout.php" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+   
         </div>
     </div>
 </main>
