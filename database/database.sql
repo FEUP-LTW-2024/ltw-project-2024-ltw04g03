@@ -47,6 +47,8 @@ CREATE TABLE User (
   email TEXT NOT NULL
 );
 
+INSERT INTO User (id, name, username, password, email) VALUES 
+(1, 'Ricardo', 'ricardo', '32250170a0dca92d53ec9624f336ca24', 'ricardo@gmail.com');
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -63,6 +65,11 @@ CREATE TABLE AD (
 
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
 VALUES(1, 3, 'ricardo', 'Samsung', 'Galaxy A52', 'Good', 'Porto', 820, null, 'Very good phone and in great condition. Ready to be loved by a new owner.');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(2, 4, 'ricardo', 'Samsung', 'Galaxy Z Fold 3', 'Bad', 'Lisboa', 130, null, 'At least it is working.');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, null, 'Fair price for an unexpensive phone.');
+
 
 CREATE TABLE Transaction_ (
     id INTEGER PRIMARY KEY,
@@ -75,6 +82,8 @@ CREATE TABLE Transaction_ (
     FOREIGN KEY (buyer_id) REFERENCES User(id),
     FOREIGN KEY (seller_id) REFERENCES User(id)
 );
+
+
 
 -- ----------------------------
 -- Records of brands
