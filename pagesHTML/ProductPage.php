@@ -46,11 +46,11 @@
         
         //if($_SESSION['username'] == $ad['seller'] OR $User['role'] == 'admin'){
         ?>
-
+        <div class="button-container">
             <form action="../database/delete_ad.php" method="post">
                 <button type="submit">Delete ad</button>
             </form>
-
+        </div>
         <?php //} ?>
     </div>
 
