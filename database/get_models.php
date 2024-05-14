@@ -5,6 +5,7 @@ $db = new PDO('sqlite:../database/database.db');
 // Check if the brand ID parameter is provided
 if(isset($_GET['brandId'])) {
     $brandId = $_GET['brandId'];
+    echo $brandId;
 
     // Prepare a statement to fetch models by brand ID
     $stmt = $db->prepare("SELECT name FROM models WHERE brand_id = :brandId");

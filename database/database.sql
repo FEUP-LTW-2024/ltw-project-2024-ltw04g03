@@ -47,6 +47,7 @@ CREATE TABLE User (
   email TEXT NOT NULL
 );
 
+
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   device_id INTEGER NOT NULL,
@@ -59,6 +60,9 @@ CREATE TABLE AD (
   image_path TEXT,
   description TEXT
 );
+
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(1, 3, 'ricardo', 'Samsung', 'Galaxy A52', 'Good', 'Porto', 820, null, 'Very good phone and in great condition. Ready to be loved by a new owner.');
 
 CREATE TABLE Transaction_ (
     id INTEGER PRIMARY KEY,

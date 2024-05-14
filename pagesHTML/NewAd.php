@@ -38,57 +38,50 @@
 
 
 <script>
-function updateModels() {
-    console.log('updateModels called');
+    document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM fully loaded and parsed');
 
-    var brandName = document.getElementById('brand').value;
-    //console.log(brandName);
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var brandId = this.responseText;
-            //console.log(brandId);
-            var trimmedbrandId = brandId.replace(/^[a-zA-Z]+/, ''); //it was giving Aplle3 instead of just 3
-            //console.log(trimmedbrandId);
-            
-            fetchModels(trimmedbrandId);
-            
-        }
-    };
-    xhr.send();
-}
-
-function fetchModels(brandId) {
-    //console.log('fetchModels called');
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
-    console.log('fetchModels called');
-    xhr.onreadystatechange = function() { 
-        console.log('entrei na função');
-        if (this.readyState == 4 && this.status == 200) {
-            var models = JSON.parse(this.responseText);
-            console.log(models);
-
-            var modelSelect = document.getElementById('model');
-
-            // Clear existing options
-            modelSelect.innerHTML = '';
-
-            // Add new options
-           for (var i = 0; i < models.length; i++) {
-                var option = document.createElement('option');
-                option.value = models[i];
-                option.text = models[i];
-                modelSelect.appendChild(option);
+            function updateModels() {
+                console.log('updateModels called');
+                var brandName = document.getElementById("brand").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var brandId = this.responseText.trim();
+                        var trimmedBrandId = brandId.replace(/^[a-zA-Z]+/, '');
+                        fetchModels(trimmedBrandId);
+                    }
+                };
+                xhr.send();
             }
-        }
-    };
-    xhr.send();
-}
 
-// Attach updateModels to the onchange event of the brand dropdown
-document.getElementById('brand').onchange = updateModels;
+            function fetchModels(brandId) {
+                console.log('fetchModels called');
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '../database/get_models.php?brandId=' + brandId, true);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var models = JSON.parse(this.responseText);
+                        console.log(models);
+
+                        var modelSelect = document.getElementById('model');
+                        modelSelect.innerHTML = '';
+
+                        for (var i = 0; i < models.length; i++) {
+                            var option = document.createElement('option');
+                            option.value = models[i];
+                            option.text = models[i];
+                            modelSelect.appendChild(option);
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            document.getElementById("brand").addEventListener('change', updateModels);
+        });
+
 </script>
 
 

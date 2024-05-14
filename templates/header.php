@@ -21,6 +21,7 @@ function print_header() { ?>
             <form action="searchpage.php" method="GET">
                 <label for="brand">Brand:</label>
                 <select id="brand" name="brand">
+                    <option value="All">All brands</option>
                     <?php
 
                     $db = new SQLite3('../database/database.db');
@@ -97,7 +98,7 @@ function print_header() { ?>
 
                 <label for="RAM">Memory RAM:</label>
                 <select id="RAM" name="RAM">
-                    <option value="all">All RAM</option>
+                    <option value="all">All</option>
                     <?php
                     
                     $db = new SQLite3('../database/database.db');

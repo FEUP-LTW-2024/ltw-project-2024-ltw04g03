@@ -20,10 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':description', $description);
 
     // Set parameters from form data
+
+    //Getting the model id
     $db2 = new SQLite3('../database/dabase.db');
-
-    $device_id = $db2->query("SELECT id FROM devices WHERE model_id");
-
+    $stmt2 = $db2->prepare("SELECT id FROM model WHERE name = :modelName");
+    $model = $_POST['model'];
+    $stmt2->bindParam(':modelName', $model);
+    $stmt2->execute;
+    $device_id = $stmt2->fetchColumn();
+    
 
     $seller = $_SESSION['username']; 
     $brand = $_POST['brand'];
