@@ -27,6 +27,7 @@
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
                     //echo '<a href="pagina_produto_' . $device['id'] . '.php" class="Product-link">';
+                    echo '<a href="ProductPage.php?id=' . $ad['id'] . '" class="Product-link">';
                     echo '<div class="Products">';
                     echo '<p>ID: ' . $ad['id'] . '</p>';
                     echo '<p>Brand: ' . $ad['brand'] . '</p>';

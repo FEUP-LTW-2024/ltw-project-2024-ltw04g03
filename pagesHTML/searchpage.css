@@ -17,3 +17,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.Price {
+    font-weight: bold; /* Deixa o preço em negrito */
+    color: #4caf50; /* Cor verde para o preço */
+}
+
+.Condition {
+    font-weight: bold; /* Deixa o preço em negrito */
+}

@@ -5,6 +5,11 @@
     margin: 0 auto; /* Centraliza a linha na página */
 }
 
+.Products-row a {
+    text-decoration: none;
+    color: black;
+}
+
 /* Estilo para cada produto */
 .Products {
     width: calc(33.33% - 60px); /* Calcula a largura para ocupar cerca de um terço da largura disponível */

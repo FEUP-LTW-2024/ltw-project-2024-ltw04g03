@@ -99,6 +99,7 @@
                 // Display the fetched ads
                 if ($ads) {
                     foreach ($ads as $ad) {
+                        echo '<a href="ProductPage.php?id=' . $ad['id'] . '" class="Product-link">';
                         echo '<div class="Products">';
                         echo '<p>ID: ' . $ad['id'] . '</p>';
                         echo '<p>Brand: ' . $ad['brand'] . '</p>';
@@ -108,6 +109,7 @@
                         echo '<p class="Price">Price: ' . $ad['price'] . '$' . '</p>';
                         echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; 
                         echo '</div>';
+                        echo '</a>';
                     }
                 } else {
                     echo '<p>No ads found.</p>';

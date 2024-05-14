@@ -10,3 +10,4 @@
 
     $ads = $stmt->fetchAll();
     //$ads array now contains every fetched ad
+?>
