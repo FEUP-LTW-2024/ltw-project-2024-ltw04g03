@@ -43,7 +43,15 @@
         echo '<p><span class="attribute">Battery Type:</span> ' . $product['battery_type'] . '</p>';
         echo '<p><span class="attribute">Specifications:</span> ' . $product['specifications'] . '</p>';
         echo '</div>';
+        
+        //if($_SESSION['username'] == $ad['seller'] OR $User['role'] == 'admin'){
         ?>
+
+            <form action="../database/delete_ad.php" method="post">
+                <button type="submit">Delete ad</button>
+            </form>
+
+        <?php //} ?>
     </div>
 
 <?php print_footer(); ?>

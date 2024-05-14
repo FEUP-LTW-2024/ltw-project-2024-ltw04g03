@@ -44,11 +44,12 @@ CREATE TABLE User (
   name TEXT NOT NULL,
   username TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
-  email TEXT NOT NULL
+  email TEXT NOT NULL,
+  role TEXT
 );
 
-INSERT INTO User (id, name, username, password, email) VALUES 
-(1, 'Ricardo', 'ricardo', '32250170a0dca92d53ec9624f336ca24', 'ricardo@gmail.com');
+INSERT INTO User (id, name, username, password, email, role) VALUES 
+(1, 'Ricardo', 'ricardo', '32250170a0dca92d53ec9624f336ca24', 'ricardo@gmail.com', 'admin');
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

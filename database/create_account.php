@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $hashed_password = md5($_POST["password"]); //hash the password
     $email = $_POST["email"];
+    $role = 'user';
 
 
     if($db){
@@ -29,12 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else{
     // Prepare SQL statement to insert into the User table
-    $stmt = $db->prepare("INSERT INTO User (name, username, password, email) VALUES (?, ?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO User (name, username, password, email, role) VALUES (?, ?, ?, ?, ?)");
 
 
     // Bind parameters and execute the statement
     //$stmt->bindParam($name, $username, $hashed_password, $email);
-    $stmt->execute([$name, $username, $hashed_password, $email]);
+    $stmt->execute([$name, $username, $hashed_password, $email, $role]);
     header("Location: ../pagesHTML/LoginPage.php");
     }
 }

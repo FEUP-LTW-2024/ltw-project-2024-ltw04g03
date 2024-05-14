@@ -28,8 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt2->bindParam(':modelName', $model);
     $stmt2->execute;
     $device_id = $stmt2->fetchColumn();
-    
 
+    //change the user's role
+    $stmt = $db->prepare("UPDATE User SET role = :role WHERE username = :username");
+    $stmt->bindParam(':role', $role);
+    $stmt->bindParam(':username', $seller);
+
+    $role = 'seller';
+
+    if ($stmt->execute()) {
+        echo "User role updated to 'seller'.";
+    } else {
+        echo "Error updating user role.";
+    }
+
+    
     $seller = $_SESSION['username']; 
     $brand = $_POST['brand'];
     $model = $_POST['model']; 
@@ -37,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+
+    
   
 
     // Check if file is uploaded
