@@ -18,8 +18,24 @@
 <main>
     <div class="background">
         <div class="page-inner-content">
+            <!-- Ordering Form -->
+            <form method="GET" action="../pagesHTML/searchpage.php" id="orderForm">
+                <input type="hidden" name="brand" value="<?php echo htmlspecialchars($_GET['brand'] ?? ''); ?>">
+                <input type="hidden" name="released_at" value="<?php echo htmlspecialchars($_GET['released_at'] ?? ''); ?>">
+                <input type="hidden" name="storage" value="<?php echo htmlspecialchars($_GET['storage'] ?? ''); ?>">
+                <input type="hidden" name="RAM" value="<?php echo htmlspecialchars($_GET['RAM'] ?? ''); ?>">
+                <input type="hidden" name="display" value="<?php echo htmlspecialchars($_GET['display'] ?? ''); ?>">
+                <input type="hidden" name="camera" value="<?php echo htmlspecialchars($_GET['camera'] ?? ''); ?>">
+                <label for="order">Order by Price:</label>
+                <select name="order" id="order" onchange="document.getElementById('orderForm').submit();">
+                    <option value="asc" <?php echo isset($_GET['order']) && $_GET['order'] == 'asc' ? 'selected' : ''; ?>>Ascending</option>
+                    <option value="desc" <?php echo isset($_GET['order']) && $_GET['order'] == 'desc' ? 'selected' : ''; ?>>Descending</option>
+                </select>
+            </form>
+
             <h1 class="section-title">Filtered Ads</h1>
             <div class="underline"></div>
+
             <div class="Products-row">
                 <?php
                 // Include database connection
@@ -86,11 +102,18 @@
                     $params[':camera'] = $_GET['camera'];
                 }
 
+                // Check if order is set and valid
+                $order = 'ASC';
+                if (isset($_GET['order']) && in_array($_GET['order'], ['asc', 'desc'])) {
+                    $order = strtoupper($_GET['order']);
+                }
+                $query .= " ORDER BY ad.price $order";
+
                 $stmt = $db->prepare($query);
 
                 // Bind parameters
                 foreach ($params as $key => $value) {
-                    $stmt->bindParam($key, $value);
+                    $stmt->bindValue($key, $value);
                 }
 
                 $stmt->execute();
