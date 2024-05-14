@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Bind parameters and execute the statement
     //$stmt->bindParam($name, $username, $hashed_password, $email);
-    $stmt->execute([$name, $username, $hashed_password, $email]);
+    $stmt->execute([$name, $username, $hashed_password, $email, $role]);
     header("Location: ../pagesHTML/LoginPage.php");
     }
 }

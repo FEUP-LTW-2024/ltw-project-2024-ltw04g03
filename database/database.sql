@@ -45,7 +45,7 @@ CREATE TABLE User (
   username TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
   email TEXT NOT NULL,
-  role TEXT,
+  role TEXT
 );
 
 INSERT INTO User (id, name, username, password, email, role) VALUES 

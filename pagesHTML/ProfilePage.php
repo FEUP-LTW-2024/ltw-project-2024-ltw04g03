@@ -43,6 +43,7 @@ print_header();
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($user['name']); ?></p>
                     <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                    <p><strong>Role:</strong> <?php echo htmlspecialchars($user['role']); ?></p>
                 <?php else : ?>
                     <p>User not found.</p>
                 <?php endif; ?>
