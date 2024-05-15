@@ -68,7 +68,7 @@ We have been careful with the following security aspects:
 - [ ] **Cross-Site Scripting (XSS)**
 - [ ] **Cross-Site Request Forgery (CSRF)**
 
-**Password Storage Mechanism**: md5 / sha1 / sha256 / hash_password&verify_password
+**Password Storage Mechanism**: hash_password&verify_password
 
 ### Transactions
 

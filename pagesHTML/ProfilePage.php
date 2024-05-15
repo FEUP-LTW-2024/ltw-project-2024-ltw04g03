@@ -1,4 +1,5 @@
 <?php
+ini_set('session.cookie_httponly', 1);
 session_start();
 include_once("../templates/header.php");
 include_once("../templates/footer.php");
