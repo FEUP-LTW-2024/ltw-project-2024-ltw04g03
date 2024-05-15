@@ -18,6 +18,7 @@
     <div class="product-details">
         <?php
         include_once("../database/fetch_productpage.php");
+        //include_once("../database/join_user_ad.php");
 
         echo '<div class="ad-container">';
         echo '<img src="' . htmlspecialchars($product['image_path']) . '" alt="' . $product['brand'] . ' ' . $product['model'] . '">';
@@ -44,7 +45,7 @@
         echo '<p><span class="attribute">Specifications:</span> ' . $product['specifications'] . '</p>';
         echo '</div>';
         
-        if($_SESSION['username'] == $product['seller_username'] ){//OR $User['role'] == 'admin'
+        if($_SESSION['username'] == $product['seller_username'] OR $_SESSION['user_role'] == 'admin' ){
         ?>
         <div class="button-container">
             <form action="../database/delete_ad.php" method="post">
