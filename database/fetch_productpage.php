@@ -7,21 +7,13 @@
 
     // Fetch product details from the database
     $product_id = $_GET['id']; // Get the product ID from the URL
-    $stmt = $pdo->prepare("SELECT * FROM AD WHERE id = :id");
+    $stmt = $pdo->prepare("SELECT ad.*, devices.released_at, devices.body, devices.os, devices.storage, devices.display_size, devices.display_resolution, devices.camera_pixels, devices.ram, devices.chipset, devices.battery_size, devices.battery_type, devices.specifications
+                          FROM ad 
+                          JOIN devices ON ad.device_id = devices.id 
+                          WHERE ad.id = :id");
     $stmt->bindParam(':id', $product_id);
     $stmt->execute();
 
     $product = $stmt->fetch();
-
-    // Fetch device details from the devices table
-    $device_id = $_GET['id']; // Get the device ID from the URL
-    $stmt = $pdo->prepare("SELECT * FROM devices WHERE id = :id");
-    $stmt->bindParam(':id', $device_id);
-    $stmt->execute();
-
-    $device = $stmt->fetch();
-
-    // Merge product and device details into one array
-    $product = array_merge($product, $device);
 
 ?> 

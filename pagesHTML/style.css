@@ -38,7 +38,7 @@ header {
 }
 
 .filter-bar button {
-    background-color: #4CAF50;
+    background-color: #90CE92;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -47,6 +47,13 @@ header {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 20px; /* Rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better visual */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.filter-bar button:hover {
+    background-color: #4CAF50;
 }
 
 .background{
