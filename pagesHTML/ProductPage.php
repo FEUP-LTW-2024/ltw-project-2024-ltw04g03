@@ -22,10 +22,10 @@
         echo '<div class="ad-container">';
         echo '<img src="' . htmlspecialchars($product['image_path']) . '" alt="' . $product['brand'] . ' ' . $product['model'] . '">';
         echo '<h1>' . $product['brand'] . ' ' . $product['model'] . '</h1>';
-        echo '<p><span class="attribute">Description:</span> ' . $product['description'] . '</p>';
+        echo '<p><span class="attribute">Description:</span> ' . htmlspecialchars($product['description']) . '</p>';
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';
-        echo '<p><span class="attribute">Price:</span> ' . $product['price'] . '</p>';
-        echo '<p><span class="attribute">Seller:</span> ' . $product['seller_username'] . '</p>';
+        echo '<p><span class="attribute">Price:</span> ' . htmlspecialchars($product['price']) . '</p>';
+        echo '<p><span class="attribute">Seller:</span> ' . htmlspecialchars($ad['seller_username']) . '</p>';
         echo '</div>';
         echo '<div class="attributes-container">';
         echo '<h2 class="specifications">Specifications</h2>';

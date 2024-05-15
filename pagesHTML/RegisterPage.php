@@ -25,6 +25,7 @@
     <input type="email" id="email" name="email" required>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <input type="submit" value="Create Account">
 </form>
 

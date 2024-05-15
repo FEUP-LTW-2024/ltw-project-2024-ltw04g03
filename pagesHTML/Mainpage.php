@@ -32,10 +32,10 @@
                     echo '<p>ID: ' . $ad['id'] . '</p>';
                     echo '<p>Brand: ' . $ad['brand'] . '</p>';
                     echo '<p>Model: ' . $ad['model'] . '</p>';
-                    echo '<p>Description: ' . $ad['description'] . '</p>';
+                    echo '<p>Description: ' . htmlspecialchars($ad['description']) . '</p>';
                     echo '<p class="Condition">Condition: ' . $ad['condition'] . '</p>';
-                    echo '<p class="Price">Price: ' . $ad['price'] . '$' . '</p>';
-                    echo '<p>Seller: ' . $ad['seller_username'] . '<p>'; 
+                    echo '<p class="Price">Price: ' . htmlspecialchars($ad['price']) . '$' . '</p>';
+                    echo '<p>Seller: ' . htmlspecialchars($ad['seller_username']) . '<p>'; 
                     echo '</div>';
                     echo '</a>';
                 }

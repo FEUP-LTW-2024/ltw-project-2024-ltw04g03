@@ -1,4 +1,5 @@
 <?php
+ini_set('session.cookie_httponly', 1);
 // Check if the form is submitted
 session_start();
 
@@ -47,12 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $brand = $_POST['brand'];
     $model = $_POST['model']; 
     $condition = $_POST['condition'];
-    $location = $_POST['location'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
+    $location = filter_var($_POST['location'], FILTER_SANITIZE_STRING);
+    $price = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $description = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
 
-    
-  
 
     // Check if file is uploaded
     if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {

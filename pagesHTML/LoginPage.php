@@ -21,7 +21,7 @@
     <input type="text" id="username" name="username" value="" required>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" value="" required>
-
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <input type="submit" value="Login">
 </form>
 

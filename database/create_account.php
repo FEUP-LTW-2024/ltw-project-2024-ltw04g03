@@ -1,18 +1,23 @@
 <?php
+ini_set('session.cookie_httponly', 1);
 session_start();
 
+// Generate CSRF token
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include database connection
-    //require_once "db_connection.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
 
     $db = new PDO('sqlite:../database/database.db');
 
     // Get form data
-    $name = $_POST["name"];
-    $username = $_POST["username"];
-    $hashed_password = md5($_POST["password"]); //hash the password
-    $email = $_POST["email"];
+    $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
+    $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
+    $password = $_POST["password"];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT); //hash the password
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $role = 'user';
 
 
@@ -32,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare SQL statement to insert into the User table
     $stmt = $db->prepare("INSERT INTO User (name, username, password, email, role) VALUES (?, ?, ?, ?, ?)");
 
-
-    // Bind parameters and execute the statement
-    //$stmt->bindParam($name, $username, $hashed_password, $email);
     $stmt->execute([$name, $username, $hashed_password, $email, $role]);
+
+    unset($_SESSION['csrf_token']);
+
     header("Location: ../pagesHTML/LoginPage.php");
     }
 }
@@ -44,10 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['message'] = 'PROBLEMA NA BASE DE DADOS
         ';
     }
-
-
-
-    
 }
 ?>
 
