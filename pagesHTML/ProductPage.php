@@ -1,7 +1,7 @@
 <?php 
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
-
+    session_start();
     print_header();
 ?> 
 
@@ -44,15 +44,15 @@
         echo '<p><span class="attribute">Specifications:</span> ' . $product['specifications'] . '</p>';
         echo '</div>';
         
-        //if($_SESSION['username'] == $ad['seller'] OR $User['role'] == 'admin'){
+        if($_SESSION['username'] == $product['seller_username'] ){//OR $User['role'] == 'admin'
         ?>
         <div class="button-container">
             <form action="../database/delete_ad.php" method="post">
-                <input type="hidden" name="ad_id" value="<?php echo $ad['id']; ?>">
+                <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>"> 
                 <button type="submit">Delete ad</button> <!-- still not sending the id but ill do that when the permissions are fixed-->
             </form>
         </div>
-        <?php //} ?>
+        <?php  } ?>
     </div>
 
 <?php print_footer(); ?>
