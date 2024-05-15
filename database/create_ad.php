@@ -22,11 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set parameters from form data
 
     //Getting the model id
-    $db2 = new SQLite3('../database/dabase.db');
+    $db2 = new SQLite3('../database/database.db');
     $stmt2 = $db2->prepare("SELECT id FROM model WHERE name = :modelName");
-    $model = $_POST['model'];
+    //$model = $_POST['model']; //remove once the dropdown list for models is working
+    $model = "Redmi 9";
     $stmt2->bindParam(':modelName', $model);
-    $stmt2->execute;
+    $stmt2->execute();
     $device_id = $stmt2->fetchColumn();
 
     //change the user's role
@@ -45,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $seller = $_SESSION['username']; 
     $brand = $_POST['brand'];
-    $model = $_POST['model']; 
+    //$model = $_POST['model']; //remove once the dropdown list for models is working
+    $model = 'Redmi 9';
     $condition = $_POST['condition'];
     $location = $_POST['location'];
     $price = $_POST['price'];

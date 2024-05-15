@@ -29,10 +29,10 @@
     </select>
 
 
-<!-- Gets the models of the defined brand -->
+<!-- Gets the models of the defined brand 
     <label for="model">Model:</label>
-    <select id="model" name="model">
-        <!-- Models will be populated here -->
+    <select id="model" name="model">-->
+        <!-- Models will be populated here 
     </select>
 
 
@@ -83,7 +83,7 @@
         });
 
 </script>
-
+-->
 
 
     <label for="description">Description:</label>
