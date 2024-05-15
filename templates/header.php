@@ -9,8 +9,9 @@ function print_header() { ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techtudo</title>
     <link rel="stylesheet" href="../pagesHTML/style.css">
+    
 </head>
-<header>
+<header class="header">
         <div class="logo">
             <a href="Mainpage.php">
                 <img src="../docs/TechTudo_logo.png" alt="Logo do site">

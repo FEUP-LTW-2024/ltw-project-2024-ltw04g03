@@ -12,11 +12,9 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 ## Install Instructions
 
-(adapt this)
-
-    git clone <your_repo_url>
+    git clone https://github.com/FEUP-LTW-2024/ltw-project-2024-ltw04g03.git
     git checkout final-delivery-v1
-    sqlite database/database.db < database/script.sql
+    sqlite database/database.db < database/database.sql
     php -S localhost:9000
 
 ## Screenshots
@@ -45,15 +43,15 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 **Sellers**  should be able to:
 
-- [ ] List new items, providing details such as category, brand, model, size, and condition, along with images.
+- [ ] List new items, providing details such as brand, model, a description of the product, condition, location, price, along with an image of the product.
 - [ ] Track and manage their listed items.
-- [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
+??? - [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
 - [ ] Print shipping forms for items that have been sold.
 
 **Buyers**  should be able to:
 
 - [ ] Browse items using filters like category, price, and condition.
-- [ ] Engage with sellers to ask questions or negotiate prices.
+??? - [ ] Engage with sellers to ask questions or negotiate prices.
 - [ ] Add items to a wishlist or shopping cart.
 - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 

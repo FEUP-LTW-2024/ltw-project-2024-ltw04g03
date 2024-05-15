@@ -25,7 +25,7 @@
         echo '<p><span class="attribute">Description:</span> ' . $product['description'] . '</p>';
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';
         echo '<p><span class="attribute">Price:</span> ' . $product['price'] . '</p>';
-        echo '<p><span class="attribute">Seller:</span> ' . $product['seller'] . '</p>';
+        echo '<p><span class="attribute">Seller:</span> ' . $product['seller_username'] . '</p>';
         echo '</div>';
         echo '<div class="attributes-container">';
         echo '<h2 class="specifications">Specifications</h2>';

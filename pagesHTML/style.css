@@ -1,3 +1,49 @@
+/* CSS for screens larger than 80em */
+@media (max-width: 80em) {
+    .filter-bar form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .logo, .account {
+        width: 100%;
+    }
+
+    .filter-bar label, .filter-bar select, .filter-bar button {
+        flex: 1 100%;
+    }
+}
+
+/* CSS for screens larger than 60em */
+@media (max-width: 60em) {
+    .filter-bar form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .logo, .account {
+        width: 100%;
+    }
+
+    .filter-bar label, .filter-bar select, .filter-bar button {
+        flex: 1 100%;
+    }
+}
+
+/* CSS for screens smaller than 30em */
+@media (max-width: 30em) {
+    .filter-bar {
+        display: none;
+    }
+    .logo, .account {
+        width: 100%;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /* Reset de estilos padrão */
 * {
     margin: 0;
