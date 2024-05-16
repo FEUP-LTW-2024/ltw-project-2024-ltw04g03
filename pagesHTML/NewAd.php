@@ -10,7 +10,7 @@
 
 
 <!-- Gets the brands directly from the databse -->
-<form action="../database/create_ad.php" method="post">
+<form action="../database/create_ad1.php" method="post">
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
@@ -29,10 +29,10 @@
     </select>
 
 
-<!-- Gets the models of the defined brand -->
+<!-- Gets the models of the defined brand 
     <label for="model">Model:</label>
-    <select id="model" name="model">
-        <!-- Models will be populated here -->
+    <select id="model" name="model">-->
+        <!-- Models will be populated here 
     </select>
 
 
@@ -83,7 +83,7 @@
         });
 
 </script>
-
+-->
 
 
     <label for="description">Description:</label>
