@@ -3,7 +3,11 @@ ini_set('session.cookie_httponly', 1);
 // Check if the form is submitted
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
     // Include your database connection code here
     $db = new PDO('sqlite:../database/database.db');
     
@@ -55,6 +59,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if file is uploaded
     if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        // Check file type
+        $file_info = getimagesize($_FILES['image']['tmp_name']);
+        if(!$file_info) {
+            echo "Invalid file type.";
+            exit();
+        }
+
+        // Check file size (max 6MB)
+        if($_FILES['image']['size'] > 6000000) {
+            echo "File is too large.";
+            exit();
+        }
         // Define upload directory and file name
         $upload_dir = "../uploads/";
         $upload_file = $upload_dir . basename($_FILES['image']['name']);
@@ -77,10 +93,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "Ad created successfully.";
+        unset($_SESSION['csrf_token']);
         header('Location: ../pagesHTML/Mainpage.php');
     } else {
         echo "Error creating ad.";
         header('Location: ../pagesHTML/NewAd.php');
     }
+} else {
+    $_SESSION['message'] = 'Invalid CSRF token';
+    header('Location: ../pagesHTML/NewAd.php');
+    exit();
 }
 ?>

@@ -11,7 +11,7 @@
     // Check CSRF token
     if (hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
       $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
-        $password = $_POST["password"];
+      $password = $_POST["password"];
       $db = new PDO('sqlite:../database/database.db');
 
       if(!$db){
@@ -40,8 +40,8 @@
           }
       }
     } else {
-        header('Location: ../pagesHTML/LoginPage.php');
         $_SESSION['message'] = 'INVALID CSRF TOKEN';
+        header('Location: ../pagesHTML/LoginPage.php');
         exit();
     }
   }

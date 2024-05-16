@@ -49,6 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'],
         $_SESSION['message'] = 'PROBLEMA NA BASE DE DADOS
         ';
     }
+} else {
+    $_SESSION['message'] = 'Invalid CSRF token';
+    header('Location: ../pagesHTML/RegisterPage.php');
+    exit();
 }
 ?>
 
