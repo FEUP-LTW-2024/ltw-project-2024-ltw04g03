@@ -31,6 +31,7 @@
               $_SESSION['message'] = 'LOGIN SUCCESSFUL';
               unset($_SESSION['csrf_token']);
               header('Location: ../pagesHTML/Mainpage.php');
+
               exit();
           } 
           else{

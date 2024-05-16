@@ -4,6 +4,7 @@ session_start();
 include_once("../templates/header.php");
 include_once("../templates/footer.php");
 
+
 // Check if user is logged in
 if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
     header("Location: LoginPage.php");
@@ -14,9 +15,9 @@ if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
 $db = new PDO('sqlite:../database/database.db');
 
 // Fetch the user information
-$username = $_SESSION['username'];
+$username1 = $_GET['username'];
 $stmt = $db->prepare("SELECT * FROM User WHERE username = :username");
-$stmt->bindParam(':username', $username);
+$stmt->bindParam(':username', $username1);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -48,12 +49,33 @@ print_header();
                     <p>User not found.</p>
                 <?php endif; ?>
             </div>
-
+            <?php if($_SESSION['username'] == $user['username']){ ?>
             <div class="button-container">
                 <form action="../database/logout.php" method="post">
                     <button type="submit">Logout</button>
                 </form>
             </div>
+            <?php } ?>
+
+            <script>
+                console.log("Username received: <?php echo htmlspecialchars($username1); ?>");
+            </script>
+
+            <?php
+            include_once("../database/fetch_user_role.php"); ?>
+            <script>
+                console.log("Your role: <?php echo htmlspecialchars($_SESSION['user_role']); ?>");
+            </script>
+            <?php
+            
+             if($_SESSION['user_role'] == 'admin'){ ?>
+                <div class="button-container">
+                    <form action="../database/elevate_user.php" method="post">
+                        <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  <!--works but is not sending the username correctly  -->  
+                        <button type="submit">Elevate user to Admin</button>
+                    </form>
+                </div>
+            <?php } ?>
    
         </div>
     </div>

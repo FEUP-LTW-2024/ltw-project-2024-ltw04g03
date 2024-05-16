@@ -48,8 +48,9 @@ CREATE TABLE User (
   role TEXT
 );
 
+
 INSERT INTO User (id, name, username, password, email, role) VALUES 
-(1, 'Ricardo', 'ricardo', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'ricardo@gmail.com', 'admin');
+(1, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller');
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -69,7 +70,9 @@ VALUES(1, 3, 'ricardo', 'Samsung', 'Galaxy A52', 'Good', 'Porto', 820, null, 'Ve
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
 VALUES(2, 4, 'ricardo', 'Samsung', 'Galaxy Z Fold 3', 'Bad', 'Lisboa', 130, null, 'At least it is working.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, null, 'Fair price for an unexpensive phone.');
+VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, '../docs/iphone.jpg', 'Fair price for an unexpensive phone.');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(4, 40, 'jose', 'Oppo', 'Oppo F19 Pro', 'Good', 'Matosinhos', 147, '../docs/oppo.jpg', 'Very underrated phone, at good condition and great price!');
 
 
 CREATE TABLE Transaction_ (

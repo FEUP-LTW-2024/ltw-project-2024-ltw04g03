@@ -123,11 +123,22 @@ footer {
 
 /* Estilo dos links */
 a {
-    color: #fff;
+    color: rgb(85, 196, 85);
     text-decoration: none;
 }
 
 a:hover {
+    text-decoration: underline;
+    
+}
+
+.attribute a{
+    color: aquamarine;
+    text-decoration: none;
+}
+
+.attribute a:hover{
+    color: lightblue;
     text-decoration: underline;
 }
 
