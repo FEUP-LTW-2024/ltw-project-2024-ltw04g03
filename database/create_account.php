@@ -18,7 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'],
     $password = $_POST["password"];
     $hashed_password = password_hash($password, PASSWORD_BCRYPT); //hash the password
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-    $role = 'user';
+
+    //attribute the role of admin to ricardo
+    if($_SESSION['username'] == 'ricardo'){ 
+        $role = 'admin';
+    }else{
+        $role = 'user';
+    }
+
 
 
     if($db){

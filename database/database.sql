@@ -48,9 +48,9 @@ CREATE TABLE User (
   role TEXT
 );
 
+
 INSERT INTO User (id, name, username, password, email, role) VALUES 
-(1, 'Ricardo', 'ricardo', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'ricardo@gmail.com', 'admin');
-(2, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller');
+(1, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller');
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
