@@ -65,11 +65,11 @@ print_header();
             <?php
             include_once("../database/fetch_user_role.php"); ?>
             <script>
-                console.log("Your role: <?php echo htmlspecialchars($_SESSION['role']); ?>");
+                console.log("Your role: <?php echo htmlspecialchars($_SESSION['user_role']); ?>");
             </script>
             <?php
             
-             if($_SESSION['username'] == 'ricardo'){ ?>
+             if($_SESSION['user_role'] == 'admin'){ ?>
                 <div class="button-container">
                     <form action="../database/elevate_user.php" method="post">
                         <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  <!--works but is not sending the username correctly  -->  
