@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include your database connection code here
     $db = new PDO('sqlite:../database/database.db');
     
-
+    
     // Prepare and bind parameters
     $stmt = $db->prepare("INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
     $stmt->bindParam(':device_id', $device_id);
@@ -22,29 +22,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set parameters from form data
 
     //Getting the model id
-    $db2 = new SQLite3('../database/database.db');
-    $stmt2 = $db2->prepare("SELECT id FROM model WHERE name = :modelName");
-    //$model = $_POST['model']; //remove once the dropdown list for models is working
+    /*
+    $db2 = new PDO('sqlite:../database/database.db');
+    $stmt2 = $db2->prepare("SELECT id FROM models WHERE name = :modelName");
+    //$model = $_POST['model']; //uncomment once the dropdown list for models is working
     $model = "Redmi 9";
-    $stmt2->bindParam(':modelName', $model);
+    $stmt2->bindParam(':modelName', $model); ///this line is giving out an error
     $stmt2->execute();
     $device_id = $stmt2->fetchColumn();
+    //echo $device_id;*/
 
+    include_once('../database/fetch_device_id.php'); //should automatically get device_id   
+
+    /*
     //change the user's role
-    $stmt = $db->prepare("UPDATE User SET role = :role WHERE username = :username");
-    $stmt->bindParam(':role', $role);
-    $stmt->bindParam(':username', $seller);
+    $db3 = new PDO('sqlite:../database/database.db');
+    $stmt3 = $db3->prepare("UPDATE User SET role = :role WHERE username = :username");
+    $stmt3->bindParam(':role', $role);
+    $stmt3->bindParam(':username', $seller);
 
-    $role = 'seller';
+    $role = "seller";
+    $seller = $_SESSION['username']; 
+    ?><script>console.log('i reached here!!')</script><?php
 
-    if ($stmt->execute()) {
+    if ($stmt3->execute()) {
         echo "User role updated to 'seller'.";
     } else {
         echo "Error updating user role.";
     }
+    */
+    include_once('../database/update_user_role');
+    ?><script>console.log('and here!')</script><?php
+    //echo "<script>console.log('Device ID: " . $device_id . "');</script>"; this is working
 
     
-    $seller = $_SESSION['username']; 
+    $seller = $_SESSION['username'];
     $brand = $_POST['brand'];
     //$model = $_POST['model']; //remove once the dropdown list for models is working
     $model = 'Redmi 9';
@@ -77,6 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     }
 
+    ?><script>console.log('i reached here!')</script><?php
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "Ad created successfully.";

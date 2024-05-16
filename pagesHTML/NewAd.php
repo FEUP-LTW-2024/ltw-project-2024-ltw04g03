@@ -10,7 +10,7 @@
 
 
 <!-- Gets the brands directly from the databse -->
-<form action="../database/create_ad.php" method="post">
+<form action="../database/create_ad1.php" method="post">
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>

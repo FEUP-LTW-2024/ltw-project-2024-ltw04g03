@@ -135,3 +135,14 @@ a:hover {
 .account a {
     margin-right: 10px; /* Ajuste o valor conforme necessário */
 }
+
+.erro {
+    background-color: #ffe6e6; /* Light red background */
+    color: #cc0000; /* Dark red text color */
+    border: 1px solid #cc0000; /* Dark red border */
+    padding: 10px; /* Padding around the message */
+    margin-bottom: 10px; /* Spacing below the message */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+}
