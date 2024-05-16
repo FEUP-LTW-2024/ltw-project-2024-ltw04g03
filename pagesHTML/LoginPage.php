@@ -1,6 +1,10 @@
 <?php
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
+    
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     print_header();
     

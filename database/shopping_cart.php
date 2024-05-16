@@ -9,7 +9,7 @@ include_once("../templates/footer.php");
 function calculate_total_item_cost($cart) {
     $total_cost = 0;
     foreach ($cart as $item) {
-        $total_cost += $item['price'];
+        $total_cost += floatval($item['price']);
     }
     return $total_cost;
 }

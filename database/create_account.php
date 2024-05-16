@@ -1,6 +1,7 @@
 <?php
-ini_set('session.cookie_httponly', 1);
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Generate CSRF token
 if (empty($_SESSION['csrf_token'])) {
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'],
         ';
     }
 } else {
-    $_SESSION['message'] = 'Invalid CSRF token';
+    $_SESSION['message'] = 'Ups... something went wrong. Please try again.';
     header('Location: ../pagesHTML/RegisterPage.php');
     exit();
 }
