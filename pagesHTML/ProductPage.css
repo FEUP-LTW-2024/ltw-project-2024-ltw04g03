@@ -63,8 +63,19 @@
     margin-top: 10px;
 }
 
+#add-to-cart-button {
+    background-color: #77c0fc; /* Darker blue background color */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded edges */
+    padding: 15px 30px; /* Slightly smaller button size */
+    font-size: 18px; /* Slightly smaller font size */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better visual */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
 
-button {
+#delete-ad-button {
     background-color: lightcoral; /* Darker blue background color */
     border: none; /* Remove default border */
     border-radius: 20px; /* Rounded edges */
@@ -77,14 +88,24 @@ button {
 }
 
 /* Optional: Hover effect */
-button:hover {
+#delete-ad-button:hover {
     background-color: red; /* Slightly darker blue on hover */
 }
 
-.button-container {
+#add-to-cart-button:hover {
+    background-color: #038cfc; /* Slightly darker blue on hover */
+}
+
+.button-container2 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh; /* Full viewport height to center vertically */
 }
 
+.button-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Full viewport height to center vertically */
+}

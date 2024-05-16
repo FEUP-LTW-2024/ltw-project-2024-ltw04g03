@@ -10,6 +10,10 @@
     color: black;
 }
 
+.Products-row a:hover {
+    text-decoration: none;
+}
+
 /* Estilo para cada produto */
 .Products {
     width: calc(33.33% - 60px); /* Calcula a largura para ocupar cerca de um terço da largura disponível */
