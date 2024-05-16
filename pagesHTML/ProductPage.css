@@ -88,3 +88,13 @@ button:hover {
     height: 10vh; /* Full viewport height to center vertically */
 }
 
+.attribute a{
+    color: aquamarine;
+    text-decoration: none;
+}
+
+.attribute a:hover{
+    color: lightblue;
+    text-decoration: underline;
+}
+

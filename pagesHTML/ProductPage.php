@@ -19,7 +19,6 @@
     <div class="product-details">
         <?php
         include_once("../database/fetch_productpage.php");
-        //include_once("../database/join_user_ad.php");
 
         echo '<div class="ad-container">';
         echo '<img src="' . htmlspecialchars($product['image_path']) . '" alt="' . $product['brand'] . ' ' . $product['model'] . '">';
@@ -27,7 +26,9 @@
         echo '<p><span class="attribute">Description:</span> ' . htmlspecialchars($product['description']) . '</p>';
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';
         echo '<p><span class="attribute">Price:</span> ' . htmlspecialchars($product['price']) . '</p>';
-        echo '<p><span class="attribute">Seller:</span> ' . htmlspecialchars($ad['seller_username']) . '</p>';
+        echo '<p><span class="attribute">Seller:</span> 
+        <a href="ProfilePage.php?username=' . $product['seller_username'] . '">' . htmlspecialchars($product['seller_username']) . '</a></p>';
+
         echo '</div>';
         echo '<div class="attributes-container">';
         echo '<h2 class="specifications">Specifications</h2>';

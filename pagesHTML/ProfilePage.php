@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
 $db = new PDO('sqlite:../database/database.db');
 
 // Fetch the user information
-$username = $_SESSION['username'];
+$username = $_GET['username'];
 $stmt = $db->prepare("SELECT * FROM User WHERE username = :username");
 $stmt->bindParam(':username', $username);
 $stmt->execute();
@@ -49,12 +49,13 @@ print_header();
                     <p>User not found.</p>
                 <?php endif; ?>
             </div>
-
+            <?php if($_SESSION['username'] == $user['username']){ ?>
             <div class="button-container">
                 <form action="../database/logout.php" method="post">
                     <button type="submit">Logout</button>
                 </form>
             </div>
+            <?php } ?>
    
         </div>
     </div>

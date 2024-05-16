@@ -179,8 +179,9 @@ function print_header() { ?>
             </form>
         </div>
         <div class="account">
-            <a href="ProfilePage.php"><img src="../docs/default_pfp.jpg" alt="../docs/default_pfp.jpg" style="width: 30px; height: 30px;"></a>
-
+        <?php echo '<a href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
+              <img src="../docs/default_pfp.jpg" alt="Profile Picture" style="width: 30px; height: 30px;">
+          </a>';?>
             <?php if($_SESSION['loggedin']){ ?>
                 <a href="NewAd.php">New ad</a>
             <?php } ?>
