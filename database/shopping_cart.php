@@ -1,5 +1,4 @@
 <?php
-ini_set('session.cookie_httponly', 1);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -33,7 +32,7 @@ function calculate_total_costs($cart) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product = $_POST['product'];
     $price = $_POST['price'];
-    //$shipping_cost = 7;
+    $shipping_cost = 0;
 
     // Store product details in session
     $_SESSION['cart'][] = [

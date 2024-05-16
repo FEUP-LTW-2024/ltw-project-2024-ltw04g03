@@ -2,12 +2,6 @@
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
 
-    if (!isset($_SESSION['user'])) {
-        // Redirect to login page
-        header('Location: LoginPage.php');
-        exit();
-    }
-
     print_header();
     
 ?>
@@ -67,7 +61,7 @@
 
     <div class="checkout-form">
         <h2>Payment Information</h2>
-        <form action="../database/purchase_done.php" method="post">
+        <form action="purchase_done.php" method="post">
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
 

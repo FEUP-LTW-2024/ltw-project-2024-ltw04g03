@@ -29,15 +29,14 @@ print_header();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="MainPage.css">
-    <link rel="stylesheet" href="ProductPage.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
     <div class="background">
         <div class="page-inner-content">
             <h1 class="section-title">Profile</h1>
-            <div class="underline"></div>
             <div class="profile-info">
                 <?php if ($user) : ?>
                     <p><strong>ID:</strong> <?php echo htmlspecialchars($user['id']); ?></p>
