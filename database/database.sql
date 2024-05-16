@@ -49,7 +49,7 @@ CREATE TABLE User (
 );
 
 INSERT INTO User (id, name, username, password, email, role) VALUES 
-(1, 'Ricardo', 'ricardo', '32250170a0dca92d53ec9624f336ca24', 'ricardo@gmail.com', 'admin');
+(1, 'Ricardo', 'ricardo', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'ricardo@gmail.com', 'admin');
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
