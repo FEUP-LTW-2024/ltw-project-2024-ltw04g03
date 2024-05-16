@@ -23,40 +23,53 @@
         <h2>Selected Items</h2>
 
         <ul>
-
-            <li>Item Name - Price</li>
+            <?php
+            include_once("../database/shopping_cart.php");
+            // Display cart items
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $item) {
+                    echo '<li>' . $item['product'] . ' - $' . $item['price'] . '</li>';
+                }
+            }
+            ?>
         </ul>
     </div>
 
 
     <div class="total-price-items">
         <h2>Price of Items</h2>
-        <p>$0</p> 
+        <p>$<?php 
+        include_once("../database/shopping_cart.php");
+        echo calculate_total_item_cost($_SESSION['cart']); ?></p>
     </div>
 
 
     <div class="shipping-price">
         <h2>Shipping Costs</h2>
-        <p>$0</p> <!-- Mudar consuante a distância ao remetente  -->
+        <p>$<?php 
+        include_once("../database/shopping_cart.php");
+        echo calculate_shipping_cost($_SESSION['cart']); ?></p>
     </div>
 
     <div class="item-price+shipping-price">
         <h2>Total Cost</h2>
-        <p>$0</p> <!--Soma dos dois em cima-->
+        <p>$<?php 
+        include_once("../database/shopping_cart.php");
+        echo calculate_total_costs($_SESSION['cart']); ?></p>
     </div>
 
 
     <div class="checkout-form">
         <h2>Payment Information</h2>
-        <form>
+        <form action="purchase_done.php" method="post">
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
 
             <label for="debit-card">Debit card Number:</label>
-            <input type="text" id="debit-card" name="debit-card" maxlength="16" required>
+            <input type="text" id="debit-card" name="debit-card" pattern="\d{16}" required>
 
             <label for="CVV/CVC">CVV/CVC:</label>
-            <input type="text" id="CVV/CVC" name="CVV/CVC" maxlength = "3" required>
+            <input type="text" id="CVV/CVC" name="CVV/CVC" pattern="\d{3}" required>
 
 
             <button type="submit">Finalize Purchase</button>

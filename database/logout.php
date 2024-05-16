@@ -1,6 +1,7 @@
 <?php
-ini_set('session.cookie_httponly', 1);
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Reset session variables
 $_SESSION['loggedin'] = false;

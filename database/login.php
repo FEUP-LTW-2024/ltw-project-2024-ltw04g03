@@ -1,7 +1,7 @@
 <?php
-  ini_set('session.cookie_httponly', 1);
-  session_start();
-
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
   // Generate CSRF token
   if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -36,12 +36,12 @@
           } 
           else{
               header('Location: ../pagesHTML/LoginPage.php');
-              $_SESSION['message'] = 'DADOS DE LOGIN INVÁLIDOS';
+              $_SESSION['message'] = 'INVALID LOGIN CREDENTIALS';
               exit();
           }
       }
     } else {
-        $_SESSION['message'] = 'INVALID CSRF TOKEN';
+        $_SESSION['message'] = 'Ups... something went wrong. Please try again.';
         header('Location: ../pagesHTML/LoginPage.php');
         exit();
     }

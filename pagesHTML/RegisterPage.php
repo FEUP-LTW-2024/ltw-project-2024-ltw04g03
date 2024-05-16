@@ -1,6 +1,9 @@
 <?php
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
     <?php
     //everytime we want a message to appear the following code should be inserted
