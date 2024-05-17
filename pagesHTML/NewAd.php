@@ -10,7 +10,7 @@
 
 
 <!-- Gets the brands directly from the databse -->
-<form action="../database/create_ad1.php" method="post">
+<form action="../database/create_ad1.php" method="post"> <!-- change to create_ad1.php for debugging and create_ad.php for normal -->
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
@@ -74,10 +74,15 @@
                             option.text = models[i];
                             modelSelect.appendChild(option);
                         }
+
+                        // Set the value of the "model" dropdown to the first model
+                        if (models.length > 0) {
+                            modelSelect.value = models[0];
+                        }
                     }
                 };
-                xhr.send();
-            }
+            xhr.send();
+}
             document.getElementById("brand_id_list").addEventListener('change', updateModels);      
         }
     );

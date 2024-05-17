@@ -4,8 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 
-// Include the script to fetch the device ID
-include_once('../database/fetch_device_id.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fetch form data
@@ -14,9 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'];
     $condition = $_POST['condition'];
     $price = $_POST['price'];
-    
-    // Set the model to 'Redmi 9'
-    $model = 'Redmi 9';
+    $model = $_POST['model'];
+
+?> <script>
+var model = <?php echo json_encode($model); ?>;
+console.log(model);
+</script> <?php
 
     // Handle image upload
     $image_path = '';
@@ -37,7 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch device_id from fetch_device_id.php
     $device_id = null;  // Initialize $device_id variable to avoid potential issues
-    include('../database/fetch_device_id.php');
+
+    include_once('../database/fetch_device_id.php');
+    $model = $_POST['model'];
+    $device_id = fetchDeviceId($model);
+
+
+
+    ?> <script>
+    var model = <?php echo json_encode($device_id); ?>;
+    console.log(model);
+    </script> <?php
+
 
     if (!$device_id) {
         echo "Device ID could not be retrieved.";
@@ -50,6 +62,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare the SQL statement
     $sql_statement = 'INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)';
     $stmt = $db->prepare($sql_statement);
+
+    ?> <script>
+var model = <?php echo json_encode($model); ?>;
+console.log(model);
+</script> <?php
 
     // Bind parameters
     $stmt->bindParam(':device_id', $device_id);
