@@ -10,7 +10,7 @@
 
 
 <!-- Gets the brands directly from the databse -->
-<form action="../database/create_ad1.php" method="post"> <!-- change to create_ad1.php for debugging and create_ad.php for normal -->
+<form action="../database/create_ad1.php" method="post" enctype="multipart/form-data"> <!-- change to create_ad1.php for debugging and create_ad.php for normal -->
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
@@ -112,6 +112,7 @@
 
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
+
   
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <input type="submit" value="Create Ad">

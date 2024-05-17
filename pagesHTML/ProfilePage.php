@@ -71,7 +71,7 @@ print_header();
              if($_SESSION['user_role'] == 'admin'){ ?>
                 <div class="button-container">
                     <form action="../database/elevate_user.php" method="post">
-                        <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  <!--works but is not sending the username correctly  -->  
+                        <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  
                         <button type="submit">Elevate user to Admin</button>
                     </form>
                 </div>
