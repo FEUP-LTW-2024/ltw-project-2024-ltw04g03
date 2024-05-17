@@ -32,6 +32,7 @@ print_header();
     <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="MainPage.css">
 </head>
 <body>
 <main>
@@ -76,6 +77,42 @@ print_header();
                     </form>
                 </div>
             <?php } ?>
+
+            
+    <div class="background">
+        <div class="page-inner-content">
+            <h1 class="section-title">User's ads</h1>
+            <div class="underline"></div>
+            <div class="Products-row">
+                <?php
+                //unset($_SESSION['cart']); //not needed unless the reset isnt working
+                include_once("../database/fetch_ads.php");
+                // Loop through the fetched devices and display them
+                foreach ($ads as $ad) {
+                    if($ad['seller_username'] == $username1){
+                    echo '<div class="Products">';
+                    echo '<form id="productForm' . $ad['id'] . '" action="ProductPage.php" method="get">';
+                    echo '<input type="hidden" name="id" value="' . $ad['id'] . '">';
+                    echo '<input type="hidden" name="username" value="' . $ad['seller_username'] . '">';
+                    echo '<a href="#" onclick="document.getElementById(\'productForm' . $ad['id'] . '\').submit();" class="Product-link">';
+                    echo '<div>';
+                    echo '<p>ID: ' . $ad['id'] . '</p>';
+                    echo '<p>Brand: ' . $ad['brand'] . '</p>';
+                    echo '<p>Model: ' . $ad['model'] . '</p>';
+                    echo '<p>Description: ' . htmlspecialchars($ad['description']) . '</p>';
+                    echo '<p class="Condition">Condition: ' . $ad['condition'] . '</p>';
+                    echo '<p class="Price">Price: ' . htmlspecialchars($ad['price']) . '$' . '</p>';
+                    echo '<p>Seller: ' . htmlspecialchars($ad['seller_username']) . '<p>'; 
+                    echo '</div>';
+                    echo '</a>';
+                    echo '</form>';
+                    echo '</div>';}
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
    
         </div>
     </div>

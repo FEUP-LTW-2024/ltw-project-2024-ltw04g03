@@ -3,6 +3,7 @@
     include_once("../templates/footer.php");
 
     print_header();
+    
 ?> 
 
 <!DOCTYPE html>
