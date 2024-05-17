@@ -3,6 +3,11 @@
     include_once("../templates/footer.php");
 
     print_header();
+    start_session();
+
+    if(!isset($_SESSION['username'])){
+        Header('Location:../pagesHTML/LoginPage.php');
+    }
 ?>
 
 <link rel='stylesheet' href = 'CreateAccount.css'>

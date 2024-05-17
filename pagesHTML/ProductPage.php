@@ -4,6 +4,10 @@
     ini_set('session.cookie_httponly', 1);
     session_start();
     print_header();
+
+    if(!isset($_SESSION['username'])){
+        Header('Location:../pagesHTML/LoginPage.php');
+    }
 ?> 
 
 <!DOCTYPE html>
