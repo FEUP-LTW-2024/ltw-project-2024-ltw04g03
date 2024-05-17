@@ -1,8 +1,11 @@
 /* Estilo para a linha de produtos */
 .Products-row {
-    text-align: center; /* Centraliza os produtos na linha */
-    max-width: 1700px; /* Largura máxima da linha */
-    margin: 0 auto; /* Centraliza a linha na página */
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    justify-content: center; /* Center the products in the row */
+    gap: 20px; /* Space between items */
+    max-width: 1700px; /* Maximum width of the row */
+    margin: 0 auto; /* Center the row on the page */
 }
 
 .Products-row a {
@@ -14,28 +17,52 @@
     text-decoration: none;
 }
 
-/* Estilo para cada produto */
+/* Style for each product */
 .Products {
-    width: calc(33.33% - 60px); /* Calcula a largura para ocupar cerca de um terço da largura disponível */
-    background-color: #fff; /* Cor de fundo do produto */
-    border: 1px solid #ddd; /* Borda ao redor do produto */
-    padding: 10px; /* Espaçamento interno do produto */
-    margin-bottom: 20px; /* Espaçamento entre os produtos */
-    text-align: center; /* Centraliza o conteúdo do produto */
-    display: inline-block; /* Exibe os produtos lado a lado */
-    vertical-align: top; /* Alinha os produtos pela parte superior */
-    box-sizing: border-box; /* Mantém a largura incluindo padding e borda */
+    width: 300px; /* Fixed width for each product */
+    height: 450px; /* Fixed height for each product */
+    background-color: #fff; /* Background color of the product */
+    border: 1px solid #ddd; /* Border around the product */
+    padding: 10px; /* Padding inside the product */
+    margin-bottom: 20px; /* Space between products */
+    text-align: center; /* Center the content of the product */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange content in a column */
+    align-items: center; /* Center content horizontally */
+    justify-content: start;
+    overflow: hidden;
+    box-sizing: border-box; /* Include padding and border in width */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better visual */
+    transition: transform 0.3s ease; /* Smooth transition for transform */
 }
 
 .Products img {
-    max-width: 100%; /* Garante que a imagem do produto não exceda a largura do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 100%;
+    height: 315px; /* Adjust this value to get the desired cropping effect */
+    object-fit: cover;
+}
+
+.Product-details {
+    flex-grow: 1; /* Allow the details to grow and fill space */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange content in a column */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 10px; /* Padding inside the details */
+    height: 25%; /* Ensure this takes the remaining 25% of the container's height */
 }
 
 .Price {
-    font-weight: bold; /* Deixa o preço em negrito */
-    color: #4caf50; /* Cor verde para o preço */
+    font-weight: bold; /* Make the price bold */
+    color: #4caf50; /* Green color for the price */
+    margin-top: 10px; /* Space above the price */
 }
+
+.Model, .Condition {
+    margin-top: 5px; /* Space above each text line */
+}
+
 
 .Condition {
     font-weight: bold; /* Deixa o preço em negrito */
