@@ -22,12 +22,12 @@
             <div class="underline"></div>
             <div class="Products-row">
                 <?php
-                
+                //unset($_SESSION['cart']); //not needed unless the reset isnt working
                 include_once("../database/fetch_ads.php");
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
                     echo '<div class="Products">';
-                    echo '<form id="productForm' . $ad['id'] . '" action="ProductPage.php" method="post">';
+                    echo '<form id="productForm' . $ad['id'] . '" action="ProductPage.php" method="get">';
                     echo '<input type="hidden" name="id" value="' . $ad['id'] . '">';
                     echo '<input type="hidden" name="username" value="' . $ad['seller_username'] . '">';
                     echo '<a href="#" onclick="document.getElementById(\'productForm' . $ad['id'] . '\').submit();" class="Product-link">';

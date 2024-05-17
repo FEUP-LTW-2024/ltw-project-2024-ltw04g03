@@ -55,3 +55,6 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     echo "No items added to cart";
 }
 
+
+header("Location: ../pagesHTML/ProductPage.php?id=$ad_id");
+

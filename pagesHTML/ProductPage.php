@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body class="product-page">
+   <?php/* if(!$_SERVER["REQUEST_METHOD"] == "POST"){
+        $_POST['id'] = $_GET['id'];
+   } */?>
+
     <div class="product-details">
         <?php
         include_once("../database/fetch_productpage.php");
