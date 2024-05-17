@@ -3,7 +3,7 @@
     include_once("../templates/footer.php");
 
     print_header();
-    
+    session_start();
 ?>
 
 
@@ -18,9 +18,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="purchase-content">
+    <script>console.log('I get here!')</script>
+    <?php
+        //delete all the ads bought and reset the session cart
+        include_once('../database/delete_cart_ads');
+        unset($_SESSION['cart']);
+    ?>
+<script>console.log('and here!')</script>
+    <!-- testing the delete ad
     <img id="success-image" src="../docs/purchasedone.png" alt="Success Image">
     <h1 id="purchase-success-title">Your purchase was successfully done.</h1>
     <p id="purchase-success-message">Your product is on your way.</p>
+-->
 </body>
 
 <?php print_footer(); ?>
