@@ -4,7 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fetch form data
     $brand = $_POST['brand'];
@@ -22,7 +21,7 @@ console.log(model);
     // Handle image upload
     $image_path = '';
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $image_path = '../uploads/' . basename($_FILES['image']['name']);
+        $image_path = '../docs/uploads/' . basename($_FILES['image']['name']);
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
             echo "Error uploading image.";
             exit;
@@ -88,7 +87,10 @@ console.log(model);
     while ($retry_count < $max_retries) {
         try {
             if ($stmt->execute()) {
-                // Redirect to main page on success
+                // update the users role to seller
+                include_once('../database/update_user_role');
+                
+
                 header("Location: ../pagesHTML/Mainpage.php");
                 exit;
             } else {

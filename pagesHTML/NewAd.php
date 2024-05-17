@@ -112,6 +112,7 @@
 
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
+
   
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <input type="submit" value="Create Ad">
