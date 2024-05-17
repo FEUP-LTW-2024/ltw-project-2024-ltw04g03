@@ -65,11 +65,12 @@
             }
             ?>
             
-            <div class="button-container1">
+            
                 <?php if($in_cart == 'true'){?>
-                Already in you shopping cart!
+                    <p class="already-in-cart">Already in your shopping cart!</p>
             <?php  $in_cart = 'false';}
                 else{ ?>
+                <div class="button-container1">
             <form action="../database/shopping_cart.php" method="post">
                 <input type="hidden" name="product" value="<?php echo $product['brand'] . ' ' . $product['model']; ?>">
                 <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
