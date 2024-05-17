@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body class="product-page">
+   <?php/* if(!$_SERVER["REQUEST_METHOD"] == "POST"){
+        $_POST['id'] = $_GET['id'];
+   } */?>
+
     <div class="product-details">
         <?php
         include_once("../database/fetch_productpage.php");
@@ -48,15 +52,34 @@
         echo '</div>';
 
         if (isset($_SESSION['username'])) {
+            $in_cart = 'false';
+            if(!isset($_SESSION['cart']) OR empty($_SESSION['cart'])){
+                $in_cart = 'false';
+            }
+            else{
+                foreach($_SESSION['cart'] as $cart){
+                    if($cart['ad_id'] == $product['ad_id']){
+                        $in_cart = 'true';
+                    }
+                }
+            }
             ?>
-            <div class="button-container1">
+            
+            
+                <?php if($in_cart == 'true'){?>
+                    <p class="already-in-cart">Already in your shopping cart!</p>
+            <?php  $in_cart = 'false';}
+                else{ ?>
+                <div class="button-container1">
             <form action="../database/shopping_cart.php" method="post">
                 <input type="hidden" name="product" value="<?php echo $product['brand'] . ' ' . $product['model']; ?>">
                 <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+                <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>">
                 <button type="submit" id="add-to-cart-button">Add to Shopping Cart</button>
             </form>
             </div>
             <?php
+            }
         }
         
         if($_SESSION['username'] == $product['seller_username'] OR $_SESSION['user_role'] == 'admin' ){
@@ -64,7 +87,7 @@
         <div class="button-container2">
             <form action="../database/delete_ad.php" method="post">
                 <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>"> 
-                <button type="submit" id="delete-ad-button">Delete ad</button> <!-- still not sending the id but ill do that when the permissions are fixed-->
+                <button type="submit" id="delete-ad-button">Delete ad</button> 
             </form>
         </div>
         <?php  } ?>

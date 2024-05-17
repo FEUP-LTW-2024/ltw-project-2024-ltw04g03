@@ -33,12 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product = $_POST['product'];
     $price = $_POST['price'];
     $shipping_cost = 0;
+    $ad_id = $_POST['ad_id'];
 
     // Store product details in session
     $_SESSION['cart'][] = [
         'product' => $product,
         'price' => $price,
         'shipping_cost' => $shipping_cost,
+        'ad_id' => $ad_id,
     ];
 }
 
@@ -53,4 +55,6 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     echo "No items added to cart";
 }
 
-?>
+
+header("Location: ../pagesHTML/ProductPage.php?id=$ad_id");
+
