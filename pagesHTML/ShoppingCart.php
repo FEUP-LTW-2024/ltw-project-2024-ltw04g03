@@ -28,7 +28,11 @@
             // Display cart items
             if (isset($_SESSION['cart'])) {
                 foreach ($_SESSION['cart'] as $item) {
-                    echo '<li>' . $item['product'] . ' - $' . $item['price'] . '</li>';
+                    echo '<li>' . $item['product'] . ' - $' . $item['price'];
+                    echo '<form action="../database/remove_from_cart2.php" method="post">
+                            <input type="hidden" name="ad_id" value="' . $item['ad_id'] . '">
+                            <button type="submit" id="remove">Remove</button>
+                          </form></li>';
                 }
             }
             ?>

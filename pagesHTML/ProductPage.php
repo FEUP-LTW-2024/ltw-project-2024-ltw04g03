@@ -66,20 +66,15 @@
             ?>
             
             
-                <?php if($in_cart == 'true'){?>
-                    <p class="already-in-cart">Already in your shopping cart!</p>
-            <?php  $in_cart = 'false';}
-                else{ ?>
                 <div class="button-container1">
-            <form action="../database/shopping_cart.php" method="post">
+            <form action="<?php echo ($in_cart == 'true') ? '../database/remove_from_cart.php' : '../database/shopping_cart.php'; ?>" method="post">
                 <input type="hidden" name="product" value="<?php echo $product['brand'] . ' ' . $product['model']; ?>">
                 <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
                 <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>">
-                <button type="submit" id="add-to-cart-button">Add to Shopping Cart</button>
+                <button type="submit" id="add-to-cart-button"><?php echo ($in_cart == 'true') ? 'Remove from Shopping Cart' : 'Add to Shopping Cart'; ?></button>
             </form>
-            </div>
+        </div>
             <?php
-            }
         }
         
         if($_SESSION['username'] == $product['seller_username'] OR $_SESSION['user_role'] == 'admin' ){

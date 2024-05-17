@@ -63,3 +63,14 @@ p {
 .checkout-form button:hover {
     background-color: #45a049;
 }
+
+#remove {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+}
