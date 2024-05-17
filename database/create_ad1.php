@@ -88,7 +88,7 @@ console.log(model);
         try {
             if ($stmt->execute()) {
                 // update the users role to seller
-                include_once('../database/update_user_role');
+                include_once('../database/update_user.php');
                 
 
                 header("Location: ../pagesHTML/Mainpage.php");
