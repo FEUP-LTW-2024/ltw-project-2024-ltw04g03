@@ -1,3 +1,4 @@
+
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -20,6 +21,12 @@ console.log(model);
 
     // Handle image upload
     $image_path = '';
+
+    ?> <script>
+    var img = <?php echo json_encode(basename($_FILES['image']['name'])); ?>;
+    console.log(img);
+    </script> <?php
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $image_path = '../docs/uploads/' . basename($_FILES['image']['name']);
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
@@ -27,6 +34,12 @@ console.log(model);
             exit;
         }
     }
+
+    ?> <script>
+    var img = <?php echo json_encode($image_path); ?>;
+    console.log(img);
+    </script> <?php
+
 
     // Fetch seller username from session
     if (!isset($_SESSION['username'])) {
@@ -88,10 +101,10 @@ console.log(model);
         try {
             if ($stmt->execute()) {
                 // update the users role to seller
-                include_once('../database/update_user.php');
+                include_once('../database/update_user.php'); //not working properly
                 
 
-                header("Location: ../pagesHTML/Mainpage.php");
+                //header("Location: ../pagesHTML/Mainpage.php");
                 exit;
             } else {
                 throw new Exception($db->lastErrorMsg());
