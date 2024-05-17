@@ -3,7 +3,15 @@
     include_once("../templates/footer.php");
 
     print_header();
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $address = filter_var($_POST["address"], FILTER_SANITIZE_STRING);
+        $debit_card = filter_var($_POST["debit-card"], FILTER_SANITIZE_STRING);
+        $cvv = filter_var($_POST["CVV/CVC"], FILTER_SANITIZE_STRING);
+    }
 ?>
 
 
