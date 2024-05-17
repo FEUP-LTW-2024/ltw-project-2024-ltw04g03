@@ -14,7 +14,7 @@
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
-    <select id="brand" name="brand">
+    <select id="brand_id_list" name="brand">
         <?php
 
         $db = new SQLite3('../database/database.db');
@@ -29,21 +29,21 @@
     </select>
 
 
-<!-- Gets the models of the defined brand 
+<!-- Gets the models of the defined brand -->
     <label for="model">Model:</label>
-    <select id="model" name="model">-->
-        <!-- Models will be populated here 
+    <select id="model" name="model">
+        <!-- Models will be populated here -->
     </select>
 
 
 
-<script>
+<script defer>
     document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM fully loaded and parsed');
 
             function updateModels() {
                 console.log('updateModels called');
-                var brandName = document.getElementById("brand").value;
+                var brandName = document.getElementById("brand_id_list").value;
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
                 xhr.onreadystatechange = function () {
@@ -78,12 +78,12 @@
                 };
                 xhr.send();
             }
-
-            document.getElementById("brand").addEventListener('change', updateModels);
-        });
+            document.getElementById("brand_id_list").addEventListener('change', updateModels);      
+        }
+    );
 
 </script>
--->
+
 
 
     <label for="description">Description:</label>
