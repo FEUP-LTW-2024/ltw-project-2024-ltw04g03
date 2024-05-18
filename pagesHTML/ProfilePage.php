@@ -52,6 +52,12 @@ if (session_status() == PHP_SESSION_NONE) {
             </div>
             <?php if($_SESSION['username'] == $user['username']){ ?>
                 <div class="button-container1">
+                <form action="SoldItems.php" method="post">
+                    <input type="hidden" name="username" value="<?php echo htmlspecialchars($user['username']); ?>">
+                    <button type="submit">View Sold Items</button>
+                </form>
+                </div>
+                <div class="button-container1">
                 <form action="EditProfile.php" method="post">
                     <button type="submit">Edit Profile</button>
                 </div>

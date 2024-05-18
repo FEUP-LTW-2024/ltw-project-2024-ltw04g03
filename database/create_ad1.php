@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'];
     $condition = $_POST['condition'];
     $price = $_POST['price'];
-    $model = $_POST['model'];
+    //$model = $_POST['model'];
 
 ?> <script>
 var model = <?php echo json_encode($model); ?>;
@@ -101,7 +101,7 @@ console.log(model);
         try {
             if ($stmt->execute()) {
                 // update the users role to seller
-                include_once('../database/update_user.php'); //not working properly
+                //include_once('../database/update_user.php'); //not working properly
                 
 
                 //header("Location: ../pagesHTML/Mainpage.php");

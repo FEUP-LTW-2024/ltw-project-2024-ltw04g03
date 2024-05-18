@@ -19,9 +19,17 @@ if (!isset($_POST['ad_id'])) {
 
 
 $ad_id = $_POST['ad_id'];
+$seller_username = $_POST['seller_username'];
+echo "Received seller_username: " . $seller_username;
+$buyer_username = $_SESSION['username'];
+$address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
 
 try {
     $db = new PDO('sqlite:../database/database.db');
+
+    $db->beginTransaction();
+    $stmt = $db->prepare("INSERT INTO Transaction_ (ad_id, seller_username, buyer_username, address, transaction_date) VALUES (:ad_id, :seller_username, :buyer_username, :address, :transaction_date)");
+    $stmt->execute(['ad_id' => $ad_id, 'seller_username' => $seller_username, 'buyer_username' => $buyer_username, 'address' => $address, 'transaction_date' => date('Y-m-d H:i:s')]);
 
     $stmt = $db->prepare("DELETE FROM AD WHERE id = :id");
     $stmt->bindParam(':id', $ad_id, PDO::PARAM_INT);
@@ -31,6 +39,9 @@ try {
     } else {
         echo "Error deleting ad.";
     }
+
+    $db->commit();
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

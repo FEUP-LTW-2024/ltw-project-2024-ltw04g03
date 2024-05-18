@@ -71,11 +71,11 @@ CREATE TABLE AD (
 );
 
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(1, 4, 'ricardo', 'Samsung', 'Galaxy Z Fold 3', 'Good', 'Porto', 820, '../docs/uploads/galaxy-z-fold3-2.jpg', 'Very good phone and in great condition. Ready to be loved by a new owner.');
+VALUES(1, 4, 'jose', 'Samsung', 'Galaxy Z Fold 3', 'Good', 'Porto', 820, '../docs/uploads/galaxy-z-fold3-2.jpg', 'Very good phone and in great condition. Ready to be loved by a new owner.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
 VALUES(2, 13, 'jose', 'Apple', 'iPhone SE 2', 'Bad', 'Lisboa', 330, '../docs/uploads/iphonese2-.jpg', 'At least it is working.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, '../docs/uploads/iphone.jpg', 'Fair price for an unexpensive phone.');
+VALUES(3, 11, 'carlos', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, '../docs/uploads/iphone.jpg', 'Fair price for an unexpensive phone.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
 VALUES(4, 40, 'jose', 'Oppo', 'Oppo A54', 'Good', 'Matosinhos', 147, '../docs/uploads/oppo.jpg', 'Very underrated phone, at good condition and great price!');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
@@ -93,18 +93,15 @@ VALUES(9, 24, 'jose', 'Huawei', 'Huawei Enjoy 20 Pro', 'Bad', 'Paranhos', 74, '.
 
 
 CREATE TABLE Transaction_ (
-    id INTEGER PRIMARY KEY,
-    device_id INTEGER,
-    buyer_id INTEGER,
-    seller_id INTEGER,
+    transaction_id INTEGER PRIMARY KEY,
+    ad_id INTEGER,
+    seller_username TEXT,
+    buyer_username TEXT,
+    address TEXT,
     transaction_date DATE,
-    price DECIMAL(10, 2),
-    FOREIGN KEY (device_id) REFERENCES Device(id),
-    FOREIGN KEY (buyer_id) REFERENCES User(id),
-    FOREIGN KEY (seller_id) REFERENCES User(id)
+    FOREIGN KEY (ad_id) REFERENCES AD(id),
+    FOREIGN KEY (seller_username) REFERENCES AD(seller_username)
 );
-
-
 
 -- ----------------------------
 -- Records of brands
