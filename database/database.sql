@@ -51,6 +51,11 @@ CREATE TABLE User (
 
 INSERT INTO User (id, name, username, password, email, role) VALUES 
 (1, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller');
+INSERT INTO User (id, name, username, password, email, role) VALUES
+(2, 'Carlos', 'carlos', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'carlos@gmail.com', 'seller');
+INSERT INTO User (id, name, username, password, email, role) VALUES
+(3, 'Default User', 'user', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'user@gmail.com', 'seller');
+
 
 CREATE TABLE AD (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -66,13 +71,25 @@ CREATE TABLE AD (
 );
 
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(1, 3, 'ricardo', 'Samsung', 'Galaxy A52', 'Good', 'Porto', 820, null, 'Very good phone and in great condition. Ready to be loved by a new owner.');
+VALUES(1, 4, 'ricardo', 'Samsung', 'Galaxy Z Fold 3', 'Good', 'Porto', 820, '../docs/uploads/galaxy-z-fold3-2.jpg', 'Very good phone and in great condition. Ready to be loved by a new owner.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(2, 4, 'ricardo', 'Samsung', 'Galaxy Z Fold 3', 'Bad', 'Lisboa', 130, null, 'At least it is working.');
+VALUES(2, 13, 'jose', 'Apple', 'iPhone SE 2', 'Bad', 'Lisboa', 330, '../docs/uploads/iphonese2-.jpg', 'At least it is working.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, '../docs/iphone.jpg', 'Fair price for an unexpensive phone.');
+VALUES(3, 11, 'ricardo', 'Apple', 'Iphone 13 Pro Max', 'For parts', 'Gaia', 1300, '../docs/uploads/iphone.jpg', 'Fair price for an unexpensive phone.');
 INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
-VALUES(4, 40, 'jose', 'Oppo', 'Oppo F19 Pro', 'Good', 'Matosinhos', 147, '../docs/oppo.jpg', 'Very underrated phone, at good condition and great price!');
+VALUES(4, 40, 'jose', 'Oppo', 'Oppo A54', 'Good', 'Matosinhos', 147, '../docs/uploads/oppo.jpg', 'Very underrated phone, at good condition and great price!');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(5, 33, 'carlos', 'Microsoft', 'Lumia 640 XL', 'For parts', 'Gondomar', 15, '../docs/uploads/lumia-640-fp.jpg', 'You can have whatever you can save.');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(6, 30, 'user', 'Nokia', 'Nokia 1.4', 'As new', 'Leça da palmeira', 150, '../docs/uploads/nokia1-4.jpg', 'Nokia. It will outlive you.');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(7, 24, 'carlos', 'Huawei', 'Huawei Nova 8 Pro', 'Very good', 'Amial', 237, '../docs/uploads/nova8.jpg', 'Dont even know why i bought it');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(8, 10, 'carlos', 'Xiaomi', 'Redmi 9', 'Very good', 'Leiria', 350, '../docs/uploads/Redmi9.jpg', 'Xiaomi has great quality/price!');
+INSERT INTO AD (id, device_id, seller_username, brand, model, condition, location, price, image_path, description)
+VALUES(9, 24, 'jose', 'Huawei', 'Huawei Enjoy 20 Pro', 'Bad', 'Paranhos', 74, '../docs/uploads/s20.jpg', 'Still rings. Sometimes...');
+
+
 
 
 CREATE TABLE Transaction_ (

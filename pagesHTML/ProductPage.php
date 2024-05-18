@@ -4,6 +4,10 @@
     ini_set('session.cookie_httponly', 1);
     session_start();
     print_header();
+
+    if(!isset($_SESSION['username'])){
+        Header('Location:../pagesHTML/LoginPage.php');
+    }
 ?> 
 
 <!DOCTYPE html>
@@ -25,7 +29,7 @@
         include_once("../database/fetch_productpage.php");
 
         echo '<div class="ad-container">';
-        echo '<img src="' . htmlspecialchars($product['image_path']) . '" alt="' . $product['brand'] . ' ' . $product['model'] . '">';
+        echo '<img src="' . htmlspecialchars($product['image_path']) . '" alt="' . $product['brand'] . ' ' . $product['model'] . '" style="max-height:800px;">';
         echo '<h1>' . $product['brand'] . ' ' . $product['model'] . '</h1>';
         echo '<p><span class="attribute">Description:</span> ' . htmlspecialchars($product['description']) . '</p>';
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';

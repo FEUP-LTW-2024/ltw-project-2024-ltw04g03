@@ -3,6 +3,11 @@
     include_once("../templates/footer.php");
 
     print_header();
+    start_session();
+
+    if(!isset($_SESSION['username'])){
+        Header('Location:../pagesHTML/LoginPage.php');
+    }
 ?>
 
 <link rel='stylesheet' href = 'CreateAccount.css'>
@@ -10,11 +15,11 @@
 
 
 <!-- Gets the brands directly from the databse -->
-<form action="../database/create_ad1.php" method="post">
+<form action="../database/create_ad1.php" method="post" enctype="multipart/form-data"> <!-- change to create_ad1.php for debugging and create_ad.php for normal -->
     <h2>Create new ad</h2>
 
     <label for="brand">Brand:</label>
-    <select id="brand" name="brand">
+    <select id="brand_id_list" name="brand">
         <?php
 
         $db = new SQLite3('../database/database.db');
@@ -29,21 +34,21 @@
     </select>
 
 
-<!-- Gets the models of the defined brand 
+<!-- Gets the models of the defined brand -->
     <label for="model">Model:</label>
-    <select id="model" name="model">-->
-        <!-- Models will be populated here 
+    <select id="model" name="model">
+        <!-- Models will be populated here -->
     </select>
 
 
 
-<script>
+<script defer>
     document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM fully loaded and parsed');
 
             function updateModels() {
                 console.log('updateModels called');
-                var brandName = document.getElementById("brand").value;
+                var brandName = document.getElementById("brand_id_list").value;
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', '../database/get_brand_id.php?brandName=' + brandName, true);
                 xhr.onreadystatechange = function () {
@@ -74,16 +79,21 @@
                             option.text = models[i];
                             modelSelect.appendChild(option);
                         }
+
+                        // Set the value of the "model" dropdown to the first model
+                        if (models.length > 0) {
+                            modelSelect.value = models[0];
+                        }
                     }
                 };
-                xhr.send();
-            }
-
-            document.getElementById("brand").addEventListener('change', updateModels);
-        });
+            xhr.send();
+}
+            document.getElementById("brand_id_list").addEventListener('change', updateModels);      
+        }
+    );
 
 </script>
--->
+
 
 
     <label for="description">Description:</label>
@@ -107,6 +117,7 @@
 
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*">
+
   
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <input type="submit" value="Create Ad">

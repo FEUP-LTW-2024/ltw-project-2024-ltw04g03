@@ -1,11 +1,9 @@
+
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include_once('../database/database.php');
 
-// Include the script to fetch the device ID
-include_once('../database/fetch_device_id.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fetch form data
@@ -14,19 +12,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'];
     $condition = $_POST['condition'];
     $price = $_POST['price'];
-    
-    // Set the model to 'Redmi 9'
-    $model = 'Redmi 9';
+    $model = $_POST['model'];
+
+?> <script>
+var model = <?php echo json_encode($model); ?>;
+console.log(model);
+</script> <?php
 
     // Handle image upload
     $image_path = '';
+
+    ?> <script>
+    var img = <?php echo json_encode(basename($_FILES['image']['name'])); ?>;
+    console.log(img);
+    </script> <?php
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $image_path = '../uploads/' . basename($_FILES['image']['name']);
+        $image_path = '../docs/uploads/' . basename($_FILES['image']['name']);
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
             echo "Error uploading image.";
             exit;
         }
     }
+
+    ?> <script>
+    var img = <?php echo json_encode($image_path); ?>;
+    console.log(img);
+    </script> <?php
+
 
     // Fetch seller username from session
     if (!isset($_SESSION['username'])) {
@@ -37,7 +50,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch device_id from fetch_device_id.php
     $device_id = null;  // Initialize $device_id variable to avoid potential issues
-    include('../database/fetch_device_id.php');
+
+    include_once('../database/fetch_device_id.php');
+    $model = $_POST['model'];
+    $device_id = fetchDeviceId($model);
+
+
+
+    ?> <script>
+    var model = <?php echo json_encode($device_id); ?>;
+    console.log(model);
+    </script> <?php
+
 
     if (!$device_id) {
         echo "Device ID could not be retrieved.";
@@ -48,18 +72,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new SQLite3('../database/database.db');
 
     // Prepare the SQL statement
-    $stmt = $db->prepare('INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)');
+    $sql_statement = 'INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)';
+    $stmt = $db->prepare($sql_statement);
+
+    ?> <script>
+var model = <?php echo json_encode($model); ?>;
+console.log(model);
+</script> <?php
 
     // Bind parameters
-    $stmt->bindValue(':device_id', $device_id, SQLITE3_INTEGER);
-    $stmt->bindValue(':seller_username', $seller_username, SQLITE3_TEXT);
-    $stmt->bindValue(':brand', $brand, SQLITE3_TEXT);
-    $stmt->bindValue(':model', $model, SQLITE3_TEXT);
-    $stmt->bindValue(':condition', $condition, SQLITE3_TEXT);
-    $stmt->bindValue(':location', $location, SQLITE3_TEXT);
-    $stmt->bindValue(':price', $price, SQLITE3_FLOAT);
-    $stmt->bindValue(':image_path', $image_path, SQLITE3_TEXT);
-    $stmt->bindValue(':description', $description, SQLITE3_TEXT);
+    $stmt->bindParam(':device_id', $device_id);
+    $stmt->bindParam(':seller_username', $seller_username);
+    $stmt->bindParam(':brand', $brand);
+    $stmt->bindParam(':model', $model);
+    $stmt->bindParam(':condition', $condition);
+    $stmt->bindParam(':location', $location);
+    $stmt->bindParam(':price', $price); // Ensure price is bound as a float
+    $stmt->bindParam(':image_path', $image_path); // Handle null explicitly
+    $stmt->bindParam(':description', $description);
+    
 
     // Retry logic for database locked error
     $max_retries = 5;
@@ -69,8 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     while ($retry_count < $max_retries) {
         try {
             if ($stmt->execute()) {
-                // Redirect to main page on success
-                header("Location: ../pagesHTML/Mainpage.php");
+                // update the users role to seller
+                include_once('../database/update_user.php'); //not working properly
+                
+
+                //header("Location: ../pagesHTML/Mainpage.php");
                 exit;
             } else {
                 throw new Exception($db->lastErrorMsg());
@@ -83,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Display detailed error information
                 echo "Error: Could not create ad.<br>";
                 echo "SQLite Error: " . $e->getMessage() . "<br>";
+                echo "SQL Statement: " . htmlspecialchars($sql_statement) . "<br>";
                 echo "Device ID: " . htmlspecialchars($device_id) . "<br>";
                 echo "Seller Username: " . htmlspecialchars($seller_username) . "<br>";
                 echo "Brand: " . htmlspecialchars($brand) . "<br>";
@@ -99,6 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If we exhausted retries
     echo "Error: Could not create ad after $max_retries retries due to database lock.<br>";
+    echo "SQL Statement: " . htmlspecialchars($sql_statement) . "<br>";
     echo "Device ID: " . htmlspecialchars($device_id) . "<br>";
     echo "Seller Username: " . htmlspecialchars($seller_username) . "<br>";
     echo "Brand: " . htmlspecialchars($brand) . "<br>";

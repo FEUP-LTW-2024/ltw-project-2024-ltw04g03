@@ -3,6 +3,7 @@
     include_once("../templates/footer.php");
 
     print_header();
+    
 ?> 
 
 <!DOCTYPE html>
@@ -22,7 +23,6 @@
             <div class="underline"></div>
             <div class="Products-row">
                 <?php
-                //unset($_SESSION['cart']); //not needed unless the reset isnt working
                 include_once("../database/fetch_ads.php");
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
@@ -31,14 +31,11 @@
                     echo '<input type="hidden" name="id" value="' . $ad['id'] . '">';
                     echo '<input type="hidden" name="username" value="' . $ad['seller_username'] . '">';
                     echo '<a href="#" onclick="document.getElementById(\'productForm' . $ad['id'] . '\').submit();" class="Product-link">';
-                    echo '<div>';
-                    echo '<p>ID: ' . $ad['id'] . '</p>';
-                    echo '<p>Brand: ' . $ad['brand'] . '</p>';
-                    echo '<p>Model: ' . $ad['model'] . '</p>';
-                    echo '<p>Description: ' . htmlspecialchars($ad['description']) . '</p>';
-                    echo '<p class="Condition">Condition: ' . $ad['condition'] . '</p>';
+                    echo '<img src="' . htmlspecialchars($ad['image_path']) . '" alt="Product Image">';
+                    echo '<div class="Product-details">';
+                    echo '<p class="Model">Model: ' . htmlspecialchars($ad['model']) . '</p>';
+                    echo '<p class="Condition">Condition: ' . htmlspecialchars($ad['condition']) . '</p>';
                     echo '<p class="Price">Price: ' . htmlspecialchars($ad['price']) . '$' . '</p>';
-                    echo '<p>Seller: ' . htmlspecialchars($ad['seller_username']) . '<p>'; 
                     echo '</div>';
                     echo '</a>';
                     echo '</form>';
@@ -49,6 +46,8 @@
         </div>
     </div>
 </main>
+
+
 <?php print_footer(); ?>
 </body>
 </html>

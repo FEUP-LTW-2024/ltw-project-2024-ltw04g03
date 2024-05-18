@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && hash_equals($_SESSION['csrf_token'],
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 
     //attribute the role of admin to ricardo
-    if($_SESSION['username'] == 'ricardo'){ 
+    if($username == 'ricardo'){ 
         $role = 'admin';
     }else{
         $role = 'user';
