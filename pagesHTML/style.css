@@ -12,6 +12,10 @@
     .filter-bar label, .filter-bar select, .filter-bar button {
         flex: 1 100%;
     }
+
+    .filter-bar button {
+        margin-top: 10px;
+    }
 }
 
 /* CSS for screens larger than 60em */
@@ -28,6 +32,10 @@
     .filter-bar label, .filter-bar select, .filter-bar button {
         flex: 1 100%;
     }
+
+    .filter-bar button {
+        margin-top: 10px;
+    }
 }
 
 /* CSS for screens smaller than 30em */
@@ -41,6 +49,10 @@
     .header {
         display: flex;
         flex-direction: column;
+    }
+
+    .filter-bar button {
+        margin-top: 10px;
     }
 }
 

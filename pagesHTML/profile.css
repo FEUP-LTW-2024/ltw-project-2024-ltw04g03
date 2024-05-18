@@ -62,6 +62,10 @@
     background-color: lightgray;
 }
 
+#admin-button-container {
+    margin-bottom: 25px;
+}
+
 @media (max-width: 60em), (max-width: 30em) {
     .page-inner-content {
         padding: 10px;
@@ -81,6 +85,15 @@
     }
 
     .button-container button {
+        padding: 5px 10px;
+        font-size: 1em;
+    }
+
+    .button-container1 {
+        margin-top: 20px;
+    }
+
+    .button-container1 button {
         padding: 5px 10px;
         font-size: 1em;
     }

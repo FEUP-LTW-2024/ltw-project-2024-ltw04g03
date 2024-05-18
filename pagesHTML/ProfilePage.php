@@ -42,7 +42,6 @@ print_header();
             <h1 class="section-title">Profile</h1>
             <div class="profile-info">
                 <?php if ($user) : ?>
-                    <p><strong>ID:</strong> <?php echo htmlspecialchars($user['id']); ?></p>
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($user['name']); ?></p>
                     <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
@@ -57,14 +56,6 @@ print_header();
                     <button type="submit">Edit Profile</button>
                 </div>
                 </form>
-                <?php if($_SESSION['user_role'] == 'admin'){ ?>
-                    <div class="button-container1">
-                        <form action="../database/elevate_user.php" method="post">
-                            <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  
-                            <button type="submit">Elevate user to Admin</button>
-                        </form>
-                    </div>
-                <?php } ?>
                 <div class="button-container">
                     <form action="../database/logout.php" method="post">
                         <button type="submit">Logout</button>
@@ -83,10 +74,10 @@ print_header();
             </script>
             
             <?php if($_SESSION['user_role'] == 'admin'){ ?>
-                <div class="button-container">
+                <div id="admin-button-container" class="button-container1">
                     <form action="../database/elevate_user.php" method="post">
                         <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  
-                        <button type="submit">Elevate user to Admin</button>
+                        <button type="submit">Elevate User to Admin</button>
                     </form>
                 </div>
             <?php } ?>
