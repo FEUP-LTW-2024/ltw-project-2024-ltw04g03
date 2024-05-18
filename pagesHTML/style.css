@@ -123,23 +123,13 @@ footer {
 
 /* Estilo dos links */
 a {
-    color: rgb(85, 196, 85);
+    color: white;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
     
-}
-
-.attribute a{
-    color: aquamarine;
-    text-decoration: none;
-}
-
-.attribute a:hover{
-    color: lightblue;
-    text-decoration: underline;
 }
 
 /* Afastar os elementos "Shopping Cart" e "Login/Register" */
@@ -163,4 +153,12 @@ a:hover {
     color: #d15050; 
     font-weight: bold; 
     text-align: center; 
+}
+
+#profilephoto:hover {
+    text-decoration: none;
+}
+
+#logophoto:hover {
+    text-decoration: none;
 }

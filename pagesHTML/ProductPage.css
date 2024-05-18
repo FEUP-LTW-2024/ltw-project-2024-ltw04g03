@@ -104,20 +104,19 @@
 }
 
 
-.attribute a{
-    color: aquamarine;
-    text-decoration: none;
-}
-
-.attribute a:hover{
-    color: lightblue;
-    text-decoration: underline;
-}
-
-
 .button-container1 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh; /* Full viewport height to center vertically */
+}
+
+
+#seller-link {
+    color: #4CAF50;
+}
+
+#seller-link:hover {
+    text-decoration: underline;
+    
 }

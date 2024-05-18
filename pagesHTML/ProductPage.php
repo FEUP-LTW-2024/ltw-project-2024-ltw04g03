@@ -35,7 +35,7 @@
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';
         echo '<p><span class="attribute">Price:</span> ' . htmlspecialchars($product['price']) . '$' . '</p>';
         echo '<p><span class="attribute">Seller:</span> 
-        <a href="ProfilePage.php?username=' . $product['seller_username'] . '">' . htmlspecialchars($product['seller_username']) . '</a></p>';
+        <a id="seller-link" href="ProfilePage.php?username=' . $product['seller_username'] . '">' . htmlspecialchars($product['seller_username']) . '</a></p>';
 
         echo '</div>';
         echo '<div class="attributes-container">';

@@ -14,7 +14,7 @@ function print_header() { ?>
 </head>
 <header class="header">
         <div class="logo">
-            <a href="Mainpage.php">
+            <a id="logophoto" href="Mainpage.php">
                 <img src="../docs/TechTudo_logo.png" alt="Logo do site">
             </a>
             <a href="ShoppingCart.php">Shopping Cart</a>
@@ -180,7 +180,7 @@ function print_header() { ?>
             </form>
         </div>
         <div class="account">
-        <?php echo '<a href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
+        <?php echo '<a id="profilephoto" href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
               <img src="../docs/default_pfp.jpg" alt="Profile Picture" style="width: 30px; height: 30px;">
           </a>';?>
             <?php if($_SESSION['loggedin']){ ?>

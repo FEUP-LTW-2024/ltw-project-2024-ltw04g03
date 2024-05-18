@@ -2,14 +2,17 @@
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
-  // Generate CSRF token
-  if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-  }
 
   if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST['csrf_token'])){
+
+    if (!isset($_POST['form_id']) || !isset($_SESSION['csrf_token'][$_POST['form_id']])) {
+      $_SESSION['message'] = 'Form ID is missing or invalid. Please try again.';
+      header('Location: ../pagesHTML/RegisterPage.php');
+      exit();
+    }
+
     // Check CSRF token
-    if (hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    if (hash_equals($_SESSION['csrf_token'][$_POST['form_id']], $_POST['csrf_token'])) {
       $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
       $password = $_POST["password"];
       $db = new PDO('sqlite:../database/database.db');
@@ -29,7 +32,6 @@
               $_SESSION['username'] = $username;
               $_SESSION['loggedin'] = true;
               $_SESSION['message'] = 'LOGIN SUCCESSFUL';
-              unset($_SESSION['csrf_token']);
               header('Location: ../pagesHTML/Mainpage.php');
 
               exit();
@@ -40,6 +42,7 @@
               exit();
           }
       }
+      unset($_SESSION['csrf_token'][$_POST['form_id']]);
     } else {
         $_SESSION['message'] = 'Ups... something went wrong. Please try again.';
         header('Location: ../pagesHTML/LoginPage.php');
