@@ -3,7 +3,9 @@
     include_once("../templates/footer.php");
 
     print_header();
-    start_session();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if(!isset($_SESSION['username'])){
         Header('Location:../pagesHTML/LoginPage.php');

@@ -1,9 +1,10 @@
 <?php 
     include_once("../templates/header.php");
     include_once("../templates/footer.php");
-    ini_set('session.cookie_httponly', 1);
-    session_start();
     print_header();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if(!isset($_SESSION['username'])){
         Header('Location:../pagesHTML/LoginPage.php');
