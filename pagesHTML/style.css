@@ -83,7 +83,8 @@ header {
 }
 
 .logo img {
-    height: 40px; /* Ajuste a altura conforme necessário */
+    height: 40px;
+    border-radius: 10px;
 }
 
 .filter-bar form {

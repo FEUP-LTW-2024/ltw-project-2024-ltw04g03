@@ -33,6 +33,8 @@
         foreach ($_SESSION['cart'] as $cart) {
             echo "<script>
                 var adId = '{$cart['ad_id']}';
+                var sellerusername = '{$cart['seller_username']}';
+                var address = '{$address}';
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '../database/delete_ad.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -42,7 +44,8 @@
                         // Optionally, handle the response here
                     }
                 };
-                xhr.send('ad_id=' + adId);
+                console.log('Sending AJAX request with seller_username: ' + sellerusername);
+                xhr.send('ad_id=' + adId + '&seller_username=' + sellerusername + '&address=' + address);
             </script>";
 }
         

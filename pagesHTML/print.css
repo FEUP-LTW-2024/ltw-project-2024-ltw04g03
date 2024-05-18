@@ -1,0 +1,15 @@
+@media print {
+    .header, .footer {
+        display: none;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #printlogo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+}

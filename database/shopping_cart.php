@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $price = $_POST['price'];
     $shipping_cost = 0;
     $ad_id = $_POST['ad_id'];
+    $seller_username = $_POST['seller_username'];
 
     // Store product details in session
     $_SESSION['cart'][] = [
@@ -41,7 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'price' => $price,
         'shipping_cost' => $shipping_cost,
         'ad_id' => $ad_id,
+        'seller_username' => $seller_username
     ];
+
+    print_r($_SESSION['cart']);
 }
 
 if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {

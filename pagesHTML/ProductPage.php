@@ -76,6 +76,7 @@
                 <input type="hidden" name="product" value="<?php echo $product['brand'] . ' ' . $product['model']; ?>">
                 <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
                 <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>">
+                <input type="hidden" name="seller_username" value="<?php echo $product['seller_username']; ?>">
                 <button type="submit" id="add-to-cart-button"><?php echo ($in_cart == 'true') ? 'Remove from Shopping Cart' : 'Add to Shopping Cart'; ?></button>
             </form>
         </div>

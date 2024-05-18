@@ -52,6 +52,12 @@ if (session_status() == PHP_SESSION_NONE) {
             </div>
             <?php if($_SESSION['username'] == $user['username']){ ?>
                 <div class="button-container1">
+                <form action="SoldItems.php" method="post">
+                    <input type="hidden" name="username" value="<?php echo htmlspecialchars($user['username']); ?>">
+                    <button type="submit">View Sold Items</button>
+                </form>
+                </div>
+                <div class="button-container1">
                 <form action="EditProfile.php" method="post">
                     <button type="submit">Edit Profile</button>
                 </div>
@@ -91,7 +97,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 include_once("../database/fetch_ads.php");
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
-                    if($ad['seller_username'] == $username){
+                    if($ad['seller_username'] == $username1){
                     echo '<div class="Products">';
                     echo '<form id="productForm' . $ad['id'] . '" action="ProductPage.php" method="get">';
                     echo '<input type="hidden" name="id" value="' . $ad['id'] . '">';
