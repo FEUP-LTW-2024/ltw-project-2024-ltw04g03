@@ -31,6 +31,7 @@
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
     <label for="username">Username:</label>
+    <p id="note">Note: Once set you cannot change it.</p>
     <input type="text" id="username" name="username" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>

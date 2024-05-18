@@ -24,7 +24,12 @@
 
 .button-container {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 25px;
+}
+
+.button-container1 {
+    text-align: center;
+    margin-top: 25px;
 }
 
 .button-container button {
@@ -38,8 +43,23 @@
     border-radius: 20px;
 }
 
+.button-container1 button {
+    padding: 10px 20px;
+    border: none;
+    background-color: grey;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+}
+
 .button-container button:hover {
     background-color: red;
+}
+
+.button-container1 button:hover {
+    background-color: lightgray;
 }
 
 @media (max-width: 60em), (max-width: 30em) {

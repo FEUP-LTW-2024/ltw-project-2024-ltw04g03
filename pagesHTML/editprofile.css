@@ -1,0 +1,49 @@
+#editProfileTitle {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+}
+
+#editProfileForm {
+    width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+#editProfileForm label {
+    display: block;
+    margin: 10px 0;
+}
+
+#editProfileForm input[type="text"], 
+#editProfileForm input[type="email"], 
+#editProfileForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#editProfileSubmit {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    background-color: #77c0fc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editProfileSubmit:hover {
+    background-color: #038cfc;
+}
+
+#usernameLabel {
+    margin-bottom: 20px;
+}

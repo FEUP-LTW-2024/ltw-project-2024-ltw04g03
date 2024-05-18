@@ -1,6 +1,7 @@
 <?php
-ini_set('session.cookie_httponly', 1);
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include_once("../templates/header.php");
 include_once("../templates/footer.php");
 
@@ -50,11 +51,24 @@ print_header();
                 <?php endif; ?>
             </div>
             <?php if($_SESSION['username'] == $user['username']){ ?>
-            <div class="button-container">
-                <form action="../database/logout.php" method="post">
-                    <button type="submit">Logout</button>
+                <div class="button-container1">
+                <form action="EditProfile.php" method="post">
+                    <button type="submit">Edit Profile</button>
+                </div>
                 </form>
-            </div>
+                <?php if($_SESSION['user_role'] == 'admin'){ ?>
+                    <div class="button-container1">
+                        <form action="../database/elevate_user.php" method="post">
+                            <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  
+                            <button type="submit">Elevate user to Admin</button>
+                        </form>
+                    </div>
+                <?php } ?>
+                <div class="button-container">
+                    <form action="../database/logout.php" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
             <?php } ?>
 
             <script>
@@ -66,16 +80,7 @@ print_header();
             <script>
                 console.log("Your role: <?php echo htmlspecialchars($_SESSION['user_role']); ?>");
             </script>
-            <?php
             
-             if($_SESSION['user_role'] == 'admin'){ ?>
-                <div class="button-container">
-                    <form action="../database/elevate_user.php" method="post">
-                        <input type="hidden" name="username" value="<?php echo htmlspecialchars($username1); ?>">  <!--works but is not sending the username correctly  -->  
-                        <button type="submit">Elevate user to Admin</button>
-                    </form>
-                </div>
-            <?php } ?>
    
         </div>
     </div>
