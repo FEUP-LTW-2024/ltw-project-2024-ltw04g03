@@ -35,7 +35,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="MainPage.css">
 </head>
-<body>
+<body class="profile-page">
 <main>
     <div class="background">
         <div class="page-inner-content">
@@ -84,7 +84,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <div class="background">
         <div class="page-inner-content">
-            <h1 class="section-title">Hot Deals</h1>
+            <h1 class="section-title">Users' Ads</h1>
             <div class="underline"></div>
             <div class="Products-row">
                 <?php

@@ -129,7 +129,7 @@ footer {
     width: 100%;
 }
 
-.main-page footer, .shopping-cart footer, .product-page footer {
+.main-page footer, .shopping-cart footer, .product-page footer, .search-page footer, .profile-page footer{
     position: static;
 }
 
