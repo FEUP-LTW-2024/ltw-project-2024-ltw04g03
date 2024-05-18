@@ -88,7 +88,7 @@ print_header();
                 include_once("../database/fetch_ads.php");
                 // Loop through the fetched devices and display them
                 foreach ($ads as $ad) {
-                    if($ad['seller_username'] == $username){
+                    if($ad['seller_username'] == $username1){
                     echo '<div class="Products">';
                     echo '<form id="productForm' . $ad['id'] . '" action="ProductPage.php" method="get">';
                     echo '<input type="hidden" name="id" value="' . $ad['id'] . '">';
