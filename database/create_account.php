@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
         $hashed_password = password_hash($password, PASSWORD_BCRYPT); //hash the password
         $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        $profile_image = "../docs/profile_images/default_pfp.jpg";
 
         //attribute the role of admin to ricardo
         if($username == 'ricardo'){ 
@@ -44,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             else{
                 // Prepare SQL statement to insert into the User table
-                $stmt = $db->prepare("INSERT INTO User (name, username, password, email, role) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $db->prepare("INSERT INTO User (name, username, password, email, role, profile_image) VALUES (?, ?, ?, ?, ?, ?)");
 
-                $stmt->execute([$name, $username, $hashed_password, $email, $role]);
+                $stmt->execute([$name, $username, $hashed_password, $email, $role, $profile_image]);
 
                 header("Location: ../pagesHTML/LoginPage.php");
             }
