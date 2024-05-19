@@ -32,7 +32,7 @@ $user_info = fetch_user_info($_SESSION['username']);
 <body>
 <h1 id="editProfileTitle">Edit Profile</h1>
 
-<form id="editProfileForm" action="../database/update_user_info.php" method="post">
+<form id="editProfileForm" action="../database/update_user_info.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'][$form_id]; ?>">
 
@@ -47,6 +47,13 @@ $user_info = fetch_user_info($_SESSION['username']);
 
     <label for="editProfilePassword">Password:</label>
     <input type="password" id="editProfilePassword" name="password">
+
+    <label for="profile_image">Profile Picture:</label>
+    <input type="file" id="profile_image" name="profile_image" accept="image/*">
+    <p>Current Profile Picture:</p>
+
+    <img src="<?php echo htmlspecialchars($user_info['profile_image']); ?>" alt="Profile Picture" style="height:200px;">
+
 
     <button id="editProfileSubmit" type="submit">Save Changes</button>
 </form>

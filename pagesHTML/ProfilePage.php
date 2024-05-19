@@ -19,6 +19,7 @@ $stmt->bindParam(':username', $username1);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
 print_header();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -36,10 +37,23 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="MainPage.css">
 </head>
 <body class="profile-page">
+
+
 <main>
     <div class="background">
         <div class="page-inner-content">
             <h1 class="section-title">Profile</h1>
+
+            <?php 
+            $username = $username1;
+            include_once('../database/fetch_pfp.php'); ?>
+
+
+            <div class="profile-image-container">
+                <?php echo '<img src="' .$user['profile_image'] . '" alt="../docs/profile_images/deafult_pfp.jpg">' ; ?>
+                
+            </div>
+
             <div class="profile-info">
                 <?php if ($user) : ?>
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($user['name']); ?></p>
