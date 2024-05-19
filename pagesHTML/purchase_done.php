@@ -8,6 +8,15 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        if (!isset($_POST['form_id']) || !isset($_SESSION['csrf_token'][$_POST['form_id']])) {
+            die('Invalid form submission');
+        }
+
+        if (!hash_equals($_SESSION['csrf_token'][$_POST['form_id']], $_POST['csrf_token'])) {
+            die('CSRF token validation failed');
+        }
+
         $address = filter_var($_POST["address"], FILTER_SANITIZE_STRING);
         $debit_card = filter_var($_POST["debit-card"], FILTER_SANITIZE_STRING);
         $cvv = filter_var($_POST["CVV/CVC"], FILTER_SANITIZE_STRING);

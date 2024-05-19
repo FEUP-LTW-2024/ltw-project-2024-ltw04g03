@@ -3,6 +3,9 @@
     include_once("../templates/footer.php");
 
     print_header();
+
+    $form_id = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'][$form_id] = bin2hex(random_bytes(32));
     
 ?>
 
@@ -75,7 +78,8 @@
             <label for="CVV/CVC">CVV/CVC:</label>
             <input type="text" id="CVV/CVC" name="CVV/CVC" pattern="\d{3}" required>
 
-
+            <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'][$form_id]; ?>">
             <button type="submit">Finalize Purchase</button>
         </form>
     </div>
