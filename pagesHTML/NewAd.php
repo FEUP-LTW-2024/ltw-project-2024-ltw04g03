@@ -10,6 +10,9 @@
     if(!isset($_SESSION['username'])){
         Header('Location:../pagesHTML/LoginPage.php');
     }
+
+    $form_id = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'][$form_id] = bin2hex(random_bytes(32));
 ?>
 
 <link rel='stylesheet' href = 'CreateAccount.css'>
@@ -121,7 +124,8 @@
     <input type="file" id="image" name="image" accept="image/*">
 
   
-    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+    <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'][$form_id]; ?>">
     <input type="submit" value="Create Ad">
 </form>
 

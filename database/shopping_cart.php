@@ -28,7 +28,6 @@ function calculate_total_costs($cart) {
     return $total_cost + $shipping_cost;
 }
 
-// Add product to cart
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product = $_POST['product'];
     $price = $_POST['price'];
@@ -36,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ad_id = $_POST['ad_id'];
     $seller_username = $_POST['seller_username'];
 
-    // Store product details in session
     $_SESSION['cart'][] = [
         'product' => $product,
         'price' => $price,

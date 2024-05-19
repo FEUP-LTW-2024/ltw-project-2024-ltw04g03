@@ -6,9 +6,9 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 ## Group ltw04g03
 
-- Ricardo Parreira (up202205091) %
-- Álvaro Torres (up202208954) %
-- Guilherme Ferreira (up202207524) %
+- Ricardo Parreira (up202205091) 40%
+- Álvaro Torres (up202208954) 40%
+- Guilherme Ferreira (up202207524) 20%
 
 ## Install Instructions
 
@@ -47,13 +47,13 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 - [ ] List new items, providing details such as brand, model, a description of the product, condition, location, price, along with an image of the product.
 - [ ] Track and manage their listed items.
-??? - [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
+- [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
 - [ ] Print shipping forms for items that have been sold.
 
 **Buyers**  should be able to:
 
 - [ ] Browse items using filters like category, price, and condition.
-??? - [ ] Engage with sellers to ask questions or negotiate prices.
+- [ ] Engage with sellers to ask questions or negotiate prices.
 - [ ] Add items to a wishlist or shopping cart.
 - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 
@@ -71,3 +71,9 @@ We have been careful with the following security aspects:
 - [ ] **Cross-Site Request Forgery (CSRF)**
 
 **Password Storage Mechanism**: hash_password&verify_password
+
+**Aditional Requirements**:
+
+We also implemented the following additional requirements (you can add more):
+
+- [ ] **Shipping Costs**

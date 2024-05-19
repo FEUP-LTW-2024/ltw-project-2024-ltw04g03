@@ -11,7 +11,7 @@
       exit();
     }
 
-    // Check CSRF token
+    //check CSRF token
     if (hash_equals($_SESSION['csrf_token'][$_POST['form_id']], $_POST['csrf_token'])) {
       $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
       $password = $_POST["password"];

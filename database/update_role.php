@@ -4,14 +4,12 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 try {
-    // Include your database connection code here
     $db2 = new PDO('sqlite:../database/database.db');
     $db2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
             $username = $_SESSION['username'];
 
-            // Update user's role to 'seller'
             $stmt2 = $db2->prepare("UPDATE User SET role = 'seller' WHERE username = :username");
             $stmt2->bindValue(':username', $username);
 
@@ -20,7 +18,7 @@ try {
                 //Header('Location:../pagesHTML/ProfilePage.php?username=' . urlencode($username));
             } else {
                 echo "Error updating user role.";
-                print_r($stmt2->errorInfo()); // Debugging information
+                print_r($stmt2->errorInfo()); //debugging information
             }
          
 } catch (PDOException $e) {
