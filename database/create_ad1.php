@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (hash_equals($_SESSION['csrf_token'][$_POST['form_id']], $_POST['csrf_token'])) {
-        // Fetch form data
         $brand = $_POST['brand'];
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING);
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         console.log(model);
         </script> <?php
 
-        // Handle image upload
+        //handle image upload
         $image_path = '';
 
         ?> <script>
@@ -43,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
 
-            // Check file size (max 6MB)
             if($_FILES['image']['size'] > 6000000) {
                 echo "File is too large.";
                 exit();
@@ -62,21 +60,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </script> <?php
 
 
-        // Fetch seller username from session
         if (!isset($_SESSION['username'])) {
             echo "User not logged in.";
             exit;
         }
         $seller_username = $_SESSION['username'];
 
-        // Fetch device_id from fetch_device_id.php
-        $device_id = null;  // Initialize $device_id variable to avoid potential issues
+        $device_id = null;
 
         include_once('../database/fetch_device_id.php');
         $model = $_POST['model'];
         $device_id = fetchDeviceId($model);
-
-
 
         ?> <script>
         var model = <?php echo json_encode($device_id); ?>;
@@ -89,10 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        // Create a new SQLite3 instance and open the database
         $db = new SQLite3('../database/database.db');
 
-        // Prepare the SQL statement
         $sql_statement = 'INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)';
         $stmt = $db->prepare($sql_statement);
 
@@ -101,27 +93,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         console.log(model);
         </script> <?php
 
-        // Bind parameters
         $stmt->bindParam(':device_id', $device_id);
         $stmt->bindParam(':seller_username', $seller_username);
         $stmt->bindParam(':brand', $brand);
         $stmt->bindParam(':model', $model);
         $stmt->bindParam(':condition', $condition);
         $stmt->bindParam(':location', $location);
-        $stmt->bindParam(':price', $price); // Ensure price is bound as a float
-        $stmt->bindParam(':image_path', $image_path); // Handle null explicitly
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':image_path', $image_path);
         $stmt->bindParam(':description', $description);
         
-
-        // Retry logic for database locked error
         $max_retries = 5;
         $retry_count = 0;
-        $retry_delay = 100; // Milliseconds
+        $retry_delay = 100; //milliseconds
 
         while ($retry_count < $max_retries) {
             try {
                 if ($stmt->execute()) {
-                    // update the users role to seller
+                    //update the users role to seller
                     //include_once('../database/update_user.php'); //not working properly
                     
 
@@ -131,11 +120,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     throw new Exception($db->lastErrorMsg());
                 }
             } catch (Exception $e) {
-                if ($db->lastErrorCode() == 5) { // SQLITE_BUSY error code
+                if ($db->lastErrorCode() == 5) {
                     $retry_count++;
-                    usleep($retry_delay * 1000); // Convert to microseconds
+                    usleep($retry_delay * 1000); //conversion to microseconds
                 } else {
-                    // Display detailed error information
                     echo "Error: Could not create ad.<br>";
                     echo "SQLite Error: " . $e->getMessage() . "<br>";
                     echo "SQL Statement: " . htmlspecialchars($sql_statement) . "<br>";
@@ -153,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // If we exhausted retries
+        //If we exhausted retries
         echo "Error: Could not create ad after $max_retries retries due to database lock.<br>";
         echo "SQL Statement: " . htmlspecialchars($sql_statement) . "<br>";
         echo "Device ID: " . htmlspecialchars($device_id) . "<br>";

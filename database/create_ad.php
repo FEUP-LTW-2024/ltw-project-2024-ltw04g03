@@ -12,11 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (hash_equals($_SESSION['csrf_token'][$_POST['form_id']], $_POST['csrf_token'])) {
-        // Include your database connection code here
         $db = new PDO('sqlite:../database/database.db');
         
-        
-        // Prepare and bind parameters
         $stmt = $db->prepare("INSERT INTO AD (device_id, seller_username, brand, model, condition, location, price, image_path, description) VALUES (:device_id, :seller_username, :brand, :model, :condition, :location, :price, :image_path, :description)");
         $stmt->bindParam(':device_id', $device_id);
         $stmt->bindParam(':seller_username', $seller);
@@ -28,18 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':image_path', $image_path);
         $stmt->bindParam(':description', $description);
 
-        // Set parameters from form data
-
-        //Getting the model id
-    
-
         include_once('../database/fetch_device_id.php'); //should automatically get device_id   
 
-        //include_once('../database/update_user_role'); //trato disto depois
+        //include_once('../database/update_user_role');
         ?><script>console.log('and here!')</script><?php
         echo "<script>console.log('Device ID: " . $device_id . "');</script>"; 
 
-        
         $seller = $_SESSION['username'];
         $brand = $_POST['brand'];
         $model = $_POST['model']; 
@@ -77,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         ?><script>console.log('i reached here!')</script><?php
-        // Execute the prepared statement
         if ($stmt->execute()) {
             echo "Ad created successfully.";
             unset($_SESSION['csrf_token']);

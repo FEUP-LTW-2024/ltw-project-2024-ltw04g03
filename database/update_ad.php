@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ad_id'])) {
         $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         $image_path = filter_input(INPUT_POST, 'current_image_path', FILTER_SANITIZE_STRING);
 
-        // Handle image upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 
             $file_info = getimagesize($_FILES['image']['tmp_name']);
@@ -42,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ad_id'])) {
             }
         }
 
-        // Update the ad in the database
         $db = new SQLite3('../database/database.db');
         $stmt = $db->prepare('UPDATE AD SET brand = :brand, model = :model, description = :description, location = :location, condition = :condition, price = :price, image_path = :image_path WHERE id = :ad_id');
 

@@ -2,17 +2,13 @@
 session_start();
 
 try {
-    // Include your database connection code here
     $db2 = new PDO('sqlite:../database/database.db');
     $db2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Check if the form was submitted
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Check if the username is set
         if (isset($_POST['username'])) {
             $username = $_POST['username'];
 
-            // Update user's role to 'admin'
             $stmt2 = $db2->prepare("UPDATE User SET role = 'admin' WHERE username = :username");
             $stmt2->bindValue(':username', $username);
 
@@ -21,7 +17,7 @@ try {
                 Header('Location:../pagesHTML/ProfilePage.php?username=' . urlencode($username));
             } else {
                 echo "Error updating user role.";
-                print_r($stmt2->errorInfo()); // Debugging information
+                print_r($stmt2->errorInfo()); //debugging information
             }
         } else {
             echo "Username not provided.";

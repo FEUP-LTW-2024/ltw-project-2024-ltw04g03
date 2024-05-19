@@ -6,9 +6,9 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 ## Group ltw04g03
 
-- Ricardo Parreira (up202205091) %
-- Álvaro Torres (up202208954) %
-- Guilherme Ferreira (up202207524) %
+- Ricardo Parreira (up202205091) 40%
+- Álvaro Torres (up202208954) 40%
+- Guilherme Ferreira (up202207524) 20%
 
 ## Install Instructions
 
@@ -71,3 +71,9 @@ We have been careful with the following security aspects:
 - [ ] **Cross-Site Request Forgery (CSRF)**
 
 **Password Storage Mechanism**: hash_password&verify_password
+
+**Aditional Requirements**:
+
+We also implemented the following additional requirements (you can add more):
+
+- [ ] **Shipping Costs**

@@ -3,7 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!isset($_POST['form_id']) || !isset($_SESSION['csrf_token'][$_POST['form_id']])) {
@@ -16,11 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $db = new PDO('sqlite:../database/database.db');
 
-        // Get form data
         $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
         $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
         $password = $_POST["password"];
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT); //hash the password
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT); //hashes the password
         $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
         $profile_image = "../docs/profile_images/default_pfp.jpg";
 
@@ -44,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $db = NULL;
             }
             else{
-                // Prepare SQL statement to insert into the User table
                 $stmt = $db->prepare("INSERT INTO User (name, username, password, email, role, profile_image) VALUES (?, ?, ?, ?, ?, ?)");
 
                 $stmt->execute([$name, $username, $hashed_password, $email, $role, $profile_image]);
@@ -57,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['message'] = 'PROBLEMA NA BASE DE DADOS';
         }
 
-        // Unset the CSRF token for this form ID
         unset($_SESSION['csrf_token'][$_POST['form_id']]);
     } else {
         $_SESSION['message'] = 'Ups... something went wrong. Please try again.';
