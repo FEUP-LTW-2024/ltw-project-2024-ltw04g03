@@ -45,16 +45,17 @@ CREATE TABLE User (
   username TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
   email TEXT NOT NULL,
-  role TEXT
+  role TEXT,
+  profile_image TEXT
 );
 
 
-INSERT INTO User (id, name, username, password, email, role) VALUES 
-(1, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller');
-INSERT INTO User (id, name, username, password, email, role) VALUES
-(2, 'Carlos', 'carlos', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'carlos@gmail.com', 'seller');
-INSERT INTO User (id, name, username, password, email, role) VALUES
-(3, 'Default User', 'user', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'user@gmail.com', 'seller');
+INSERT INTO User (id, name, username, password, email, role, profile_image) VALUES 
+(1, 'Jose', 'jose', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'jose@gmail.com', 'seller', '../docs/profile_images/dog1.jpg');
+INSERT INTO User (id, name, username, password, email, role, profile_image) VALUES
+(2, 'Carlos', 'carlos', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'carlos@gmail.com', 'seller', '../docs/profile_images/chad.jpg');
+INSERT INTO User (id, name, username, password, email, role, profile_image) VALUES
+(3, 'Default User', 'user', '$2y$10$XWDLXeLjnXDbUEZYYR4mS.RRCgsOoF5.Ti3W6hJm7no.s8oNuhTda', 'user@gmail.com', 'seller', '../docs/profile_images/default_pfp.jpg');
 
 
 CREATE TABLE AD (

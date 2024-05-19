@@ -14,7 +14,7 @@ function fetch_user_info($username) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Prepare the SQL statement
-    $stmt = $pdo->prepare("SELECT name, username, email FROM User WHERE username = :username");
+    $stmt = $pdo->prepare("SELECT name, username, email, profile_image FROM User WHERE username = :username");
 
     // Bind the parameters
     $stmt->bindParam(':username', $username);

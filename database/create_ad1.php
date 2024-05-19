@@ -104,7 +104,7 @@ console.log(model);
                 //include_once('../database/update_user.php'); //not working properly
                 
 
-                //header("Location: ../pagesHTML/Mainpage.php");
+                header("Location: ../pagesHTML/Mainpage.php");
                 exit;
             } else {
                 throw new Exception($db->lastErrorMsg());

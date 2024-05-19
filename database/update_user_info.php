@@ -22,6 +22,22 @@ function update_user_info($name, $email, $password) {
         $password = password_hash($password, PASSWORD_BCRYPT);
         $sql .= ", password = :password";
     }
+    
+    if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
+        // Check if the uploaded file is an image
+        if (exif_imagetype($_FILES['profile_image']['tmp_name'])) {
+            // Move the uploaded file to the profile_images directory
+            $profile_image = '../docs/profile_images/' . basename($_FILES['profile_image']['name']);
+            move_uploaded_file($_FILES['profile_image']['tmp_name'], $profile_image);
+            
+            // Append profile_image to the SQL query
+            $sql .= ", profile_image = :profile_image";
+        }
+    }
+
+
+
+
     $sql .= " WHERE username = :username";
     $stmt = $pdo->prepare($sql);
 
@@ -29,9 +45,14 @@ function update_user_info($name, $email, $password) {
     $stmt->bindParam(':username', $_SESSION['username']);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':profile_image', $_POST['profile_image']);
     if ($password !== null) {
         $stmt->bindParam(':password', $password);
     }
+    if (isset($profile_image)) {
+        $stmt->bindParam(':profile_image', $profile_image);
+    }
+
 
     // Execute the SQL statement
     $stmt->execute();
