@@ -194,6 +194,7 @@ function print_header() { ?>
                 <a href="NewAd.php">New ad</a>
             <?php } ?>
             <a href="LoginPage.php">Login/Register</a>
+           
         </div>
 </header>
 <?php
