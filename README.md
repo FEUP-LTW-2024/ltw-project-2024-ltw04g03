@@ -51,13 +51,11 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 - [ ] List new items, providing details such as brand, model, a description of the product, condition, location, price, along with an image of the product.
 - [ ] Track and manage their listed items.
-- [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
 - [ ] Print shipping forms for items that have been sold.
 
 **Buyers**  should be able to:
 
 - [ ] Browse items using filters like category, price, and condition.
-- [ ] Engage with sellers to ask questions or negotiate prices.
 - [ ] Add items to a wishlist or shopping cart.
 - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 
