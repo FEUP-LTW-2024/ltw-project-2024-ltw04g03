@@ -21,7 +21,11 @@ In this project we developed a website, TechTudo, that facilitates the buying an
 
 ## Screenshots
 
-(2 or 3 screenshots of your website)
+![img](docs/screenshots/IMG-20240519-WA0011.jpg)
+![img](docs/screenshots/IMG-20240519-WA0034.jpg)
+![img](docs/screenshots/IMG-20240519-WA0032.jpg)
+![img](docs/screenshots/IMG-20240519-WA0035.jpg)
+![img](docs/screenshots/IMG-20240519-WA0031.jpg)
 
 ## Database and project UML diagram
 
