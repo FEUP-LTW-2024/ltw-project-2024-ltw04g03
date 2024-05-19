@@ -35,6 +35,7 @@
         echo '<p><span class="attribute">Description:</span> ' . htmlspecialchars($product['description']) . '</p>';
         echo '<p><span class="attribute">Condition:</span> ' . $product['condition'] . '</p>';
         echo '<p><span class="attribute">Price:</span> ' . htmlspecialchars($product['price']) . '$' . '</p>';
+        echo '<p><span class="attribute">Location:</span> ' . htmlspecialchars($product['location']) . '</p>';
         echo '<p><span class="attribute">Seller:</span> 
         <a id="seller-link" href="ProfilePage.php?username=' . $product['seller_username'] . '">' . htmlspecialchars($product['seller_username']) . '</a></p>';
 
@@ -82,16 +83,27 @@
         </div>
             <?php
         }
+        if($_SESSION['username'] == $product['seller_username']){
+            ?>
+            <div class="button-container2">
+            <form action="../pagesHTML/EditAd.php" method="post">
+                    <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>"> 
+                    <button type="submit" id="delete-ad-button">Edit ad</button> 
+                </form>
+            </div>
+            <?php  } 
         
         if($_SESSION['username'] == $product['seller_username'] OR $_SESSION['user_role'] == 'admin' ){
         ?>
         <div class="button-container2">
+
             <form action="../database/delete_ad.php" method="post">
                 <input type="hidden" name="ad_id" value="<?php echo $product['ad_id']; ?>"> 
                 <button type="submit" id="delete-ad-button">Delete ad</button> 
             </form>
         </div>
         <?php  } ?>
+
     </div>
 
 <?php print_footer(); ?>
