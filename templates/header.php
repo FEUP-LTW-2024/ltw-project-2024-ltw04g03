@@ -178,15 +178,23 @@ function print_header() { ?>
 
                 <button type="submit">Filter</button>
             </form>
-        </div>
+        </div><?php
+        $username = $_SESSION['username'];
+        include_once('../database/fetch_pfp.php'); ?>
+
         <div class="account">
-        <?php echo '<a id="profilephoto" href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
-              <img src="../docs/default_pfp.jpg" alt="Profile Picture" style="width: 30px; height: 30px;">
-          </a>';?>
+          <?php  if(!$_SESSION['loggedin'] OR !isset($_SESSION['loggedin'])){
+         echo '<a id="profilephoto" href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
+              <img src="../docs/profile_images/default_pfp.jpg" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%">
+          </a>';}else{
+          echo '<a id="profilephoto" href="ProfilePage.php?username=' . $_SESSION['username'] . '"> 
+              <img src="' .$profile_image . '" alt="Profile Picture" style="width: 30px; height: 30px;  border-radius: 50%">
+          </a>';}?>
             <?php if($_SESSION['loggedin']){ ?>
                 <a href="NewAd.php">New ad</a>
             <?php } ?>
             <a href="LoginPage.php">Login/Register</a>
+           
         </div>
 </header>
 <?php
